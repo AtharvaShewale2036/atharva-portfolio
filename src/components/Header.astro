@@ -12,9 +12,9 @@ const nav = [
     <ul>{nav.map(([label, href]) => <li><a class="label" href={href}>{label}</a></li>)}</ul>
   </nav>
   <div class="actions">
-    <a class="btn btn-ghost" href="/resume.pdf" download>Résumé (PDF)</a>
+    <a class="btn btn-ghost" href="/resume.pdf" download aria-label="Résumé (PDF)">Résumé<span class="pdf"> (PDF)</span></a>
     <button class="btn btn-paper" type="button" data-mode-toggle>
-      <span class="when-full">Quick start</span><span class="when-quick">▶ Full mode</span>
+      <span class="when-full">List view</span><span class="when-quick">▶ 3D crate</span>
     </button>
     <button class="btn btn-ghost btn-icon" type="button" data-sound-toggle aria-pressed="false" aria-label="Sound effects">SND</button>
   </div>
@@ -22,7 +22,7 @@ const nav = [
 
 <style>
   .site-header { display: flex; align-items: center; gap: var(--spacing-lg); padding-block: var(--spacing-lg); border-bottom: 1px solid var(--color-border); flex-wrap: wrap; }
-  .brand { display: flex; align-items: center; gap: var(--spacing-sm); text-decoration: none; font-weight: 700; color: var(--color-on-surface); }
+  .brand { display: flex; align-items: center; gap: var(--spacing-sm); text-decoration: none; color: var(--color-on-surface); font-size: 20px; }
   .brand-mark { width: 10px; height: 10px; background: var(--color-primary); }
   nav { margin-left: auto; }
   nav ul { display: flex; gap: var(--spacing-lg); list-style: none; margin: 0; padding: 0; }
@@ -32,28 +32,34 @@ const nav = [
   .when-quick { display: none; }
   :global(html[data-mode="quick"]) .when-full { display: none; }
   :global(html[data-mode="quick"]) .when-quick { display: inline; }
-  @media (max-width: 1023px) { nav { order: 3; flex-basis: 100%; margin-left: 0; } nav ul { flex-wrap: wrap; gap: var(--spacing-md); } .actions { margin-left: auto; } }
-  @media (max-width: 767px) { nav ul { gap: var(--spacing-sm) var(--spacing-md); } nav a { letter-spacing: 0.08em; } }
+  @media (max-width: 1023px) { nav { order: 3; flex-basis: 100%; margin-left: 0; } .actions { margin-left: auto; } }
+  /* Phones: one compact row (name, résumé, sound) and one scrollable nav row. The crate and list carry their own view switch. */
+  @media (max-width: 767px) {
+    .site-header { gap: var(--spacing-sm); padding-block: var(--spacing-md) 0; }
+    .brand { font-size: 18px; }
+    .actions { gap: var(--spacing-xs); }
+    .actions .btn { font-size: 16px; padding: 6px 10px; }
+    [data-mode-toggle], .pdf { display: none; }
+    nav ul { gap: var(--spacing-lg); overflow-x: auto; scrollbar-width: none; padding-block: var(--spacing-sm); }
+    nav a { font-size: 16px; white-space: nowrap; }
+  }
 </style>
 
 <script>
   import { initSoundToggle } from '../scripts/sound';
   initSoundToggle();
   // Mode rules must stay in sync with the inline script in layouts/Base.astro.
-  const qs = ['(max-width: 767px)', '(prefers-reduced-motion: reduce)'].map((q) => matchMedia(q));
-  for (const m of qs) {
-    m.addEventListener('change', () => {
-      const forced = qs.some((x) => x.matches);
-      let saved: string | null = null;
-      try { saved = localStorage.getItem('mode'); } catch {}
-      if (forced) document.documentElement.dataset.mode = 'quick';
-      else if (saved !== 'quick') document.documentElement.dataset.mode = 'full';
-    });
-  }
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  reduce.addEventListener('change', () => {
+    let saved: string | null = null;
+    try { saved = localStorage.getItem('mode'); } catch {}
+    if (reduce.matches) document.documentElement.dataset.mode = 'quick';
+    else if (saved !== 'quick') document.documentElement.dataset.mode = 'full';
+  });
   const root = document.documentElement;
-  document.querySelectorAll('[data-mode-toggle]').forEach((btn) =>
-    btn.addEventListener('click', () => {
-      const next = root.dataset.mode === 'quick' ? 'full' : 'quick';
+  document.querySelectorAll('[data-mode-toggle], [data-to-quick], [data-to-full]').forEach((el) =>
+    el.addEventListener('click', () => {
+      const next = el.hasAttribute('data-to-quick') ? 'quick' : el.hasAttribute('data-to-full') ? 'full' : root.dataset.mode === 'quick' ? 'full' : 'quick';
       root.dataset.mode = next;
       try { localStorage.setItem('mode', next); } catch {}
       if (!document.querySelector('[data-show]')) location.href = '/';

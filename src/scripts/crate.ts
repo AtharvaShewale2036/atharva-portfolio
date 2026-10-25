@@ -17,7 +17,15 @@ export function initCrate(root: HTMLElement): void {
     if (!silent) playBlip('flip');
   };
 
-  carts.forEach((cart, j) => cart.addEventListener('mouseenter', () => show(j)));
+  carts.forEach((cart, j) => {
+    // Mouse hover previews; touch has no hover, so the first tap previews and the second opens.
+    cart.addEventListener('pointerenter', (e) => e.pointerType === 'mouse' && show(j));
+    cart.addEventListener('click', (e) => {
+      if (j === active) return;
+      e.preventDefault();
+      show(j);
+    });
+  });
   root.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') return void (location.href = carts[active].href);
     const next = keyToIndex(e.key, active, n);

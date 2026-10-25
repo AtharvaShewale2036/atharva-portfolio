@@ -47,4 +47,11 @@ const rows = [
   .tools { color: var(--color-ink-muted); margin: 0; }
   @media (prefers-reduced-motion: reduce) { .box-art { transform: none; } }
   @media (max-width: 1023px) { .back { grid-template-columns: 1fr; } .box-art { transform: none; max-width: 320px; } }
+  @media (max-width: 767px) {
+    .back { gap: var(--spacing-lg); }
+    .box-art { max-width: 240px; margin-inline: auto; }
+    .summary-body { padding: var(--spacing-md); gap: var(--spacing-md); }
+    dl { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--spacing-sm) var(--spacing-md); }
+    dd { font-size: 13px; }
+  }
 </style>

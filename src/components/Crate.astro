@@ -11,7 +11,7 @@ const n = String(projects.length).padStart(2, '0');
   <div class="intro">
     <h1 id="crate-h" class="h-display">Dig through my crate</h1>
     <p class="prompt">Every project I've shipped or prototyped, filed like records.</p>
-    <p class="body-sm muted">Hover a cartridge to pull it up, click to open it. ← → work too.</p>
+    <p class="body-sm muted"><span class="hint-mouse">Hover a cartridge to pull it up, click to open it. ← → work too.</span><span class="hint-touch">Tap a cartridge to pull it up, tap it again to open it.</span></p>
   </div>
 
   <div class="crate" data-crate tabindex="0" role="group" aria-roledescription="carousel" aria-label="Projects crate" style={`--n:${projects.length}`}>
@@ -55,17 +55,13 @@ const n = String(projects.length).padStart(2, '0');
   import { initCrate } from '../scripts/crate';
   const root = document.querySelector<HTMLElement>('[data-crate]');
   if (root) initCrate(root);
-  document.querySelectorAll('[data-to-quick]').forEach((a) =>
-    a.addEventListener('click', () => {
-      document.documentElement.dataset.mode = 'quick';
-      try { localStorage.setItem('mode', 'quick'); } catch {}
-    }),
-  );
 </script>
 
 <style>
   :global(html[data-mode="full"]) .crate-view { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr) minmax(320px, 3fr); gap: var(--spacing-xl); align-items: center; min-height: calc(100vh - 120px); padding-block: var(--spacing-2xl); }
-  .intro .h-display { font-size: 56px; }
+  .intro .h-display { font-size: 72px; }
+  .hint-touch { display: none; }
+  @media (hover: none) { .hint-mouse { display: none; } .hint-touch { display: inline; } }
   .intro .prompt { margin-top: var(--spacing-lg); max-width: 40ch; }
 
   /* Isometric crate built from CSS 3D planes. x right, y down, z toward the viewer;
@@ -106,4 +102,13 @@ const n = String(projects.length).padStart(2, '0');
   .role { color: var(--color-primary); }
   .actions { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; margin-top: var(--spacing-md); }
   @media (max-width: 1199px) { :global(html[data-mode="full"]) .crate-view { grid-template-columns: 1fr; } }
+  /* Phones: same 3D crate, scaled down; the card sits below it. */
+  @media (max-width: 767px) {
+    :global(html[data-mode="full"]) .crate-view { min-height: 0; gap: var(--spacing-md); padding-block: var(--spacing-lg) var(--spacing-xl); }
+    .intro .h-display { font-size: 52px; }
+    .intro .prompt { margin-top: var(--spacing-sm); }
+    .crate { height: 380px; overflow-x: clip; }
+    .world { transform: translate(-48px, 20px) scale(0.78) rotateX(-16deg) rotateY(-42deg); }
+    .card-body { padding: var(--spacing-md); }
+  }
 </style>

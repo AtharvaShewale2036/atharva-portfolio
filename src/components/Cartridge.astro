@@ -26,7 +26,7 @@ const { title, spine, cover, youtubeId, caption, size = 'crate' } = Astro.props;
   .cartridge.crate { border-top: 0; border-radius: var(--rounded-sm); box-shadow: inset 0 1px 0 color-mix(in srgb, var(--color-on-surface) 18%, transparent), inset -1px 0 0 color-mix(in srgb, var(--color-ink) 40%, transparent); }
   .grooves { flex: none; height: 12px; margin-bottom: var(--spacing-md); background: repeating-linear-gradient(to bottom, var(--color-border) 0 1px, transparent 1px 4px); }
   .label-card { flex: 1; display: flex; flex-direction: column; min-height: 0; background: var(--color-ink); border-radius: var(--rounded-sm); overflow: hidden; }
-  .cart-title { margin: 0; background: var(--spine); color: var(--color-paper); font: 700 16px/1.2 var(--font-display); letter-spacing: 0.1em; text-transform: uppercase; padding: var(--spacing-sm) var(--spacing-md); }
+  .cart-title { margin: 0; background: var(--spine); color: var(--color-paper); font: 400 22px/1 var(--font-display); letter-spacing: 0.05em; text-transform: uppercase; padding: var(--spacing-sm) var(--spacing-md); }
   .window { flex: 1; min-height: 0; display: grid; place-items: center; overflow: hidden; }
   .box .window { aspect-ratio: 16 / 10; }
   .box .window.poster { aspect-ratio: 3 / 4; }

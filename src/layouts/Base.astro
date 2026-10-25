@@ -1,6 +1,5 @@
 ---
-import '@fontsource/silkscreen/400.css';
-import '@fontsource/silkscreen/700.css';
+import '@fontsource/jersey-10/400.css';
 import '@fontsource/ibm-plex-mono/400.css';
 import '@fontsource/ibm-plex-mono/600.css';
 import '../styles/tokens.css';
@@ -29,10 +28,10 @@ const ogImage = new URL(image, Astro.site);
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#2a292e" />
     <script is:inline>
-      // Decide the mode before first paint so phones never flash the 3D crate.
+      // Decide the mode before first paint: reduced-motion users never see the 3D crate.
       // Mode rules must stay in sync with the matchMedia listener in components/Header.astro.
       (function () {
-        var forced = matchMedia('(max-width: 767px)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var forced = matchMedia('(prefers-reduced-motion: reduce)').matches;
         var stored = null;
         try { stored = localStorage.getItem('mode'); } catch (e) {}
         document.documentElement.dataset.mode = forced || stored === 'quick' ? 'quick' : 'full';

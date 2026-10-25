@@ -31,11 +31,16 @@ const c = profile.contact;
 <section id="contact" class="container block" aria-labelledby="contact-h">
   <h2 id="contact-h" class="h-lg">Contact</h2>
   <ul class="contact">
-    <li><a class="btn btn-primary" href={`mailto:${c.email}`}>Email</a><span class="body-sm muted">{c.email}</span></li>
-    <li><a class="btn btn-ghost" href={c.whatsapp} rel="noopener">WhatsApp ↗</a><a class="body-sm muted" href={`tel:${c.tel}`}>{c.phone}</a></li>
-    <li><a class="btn btn-ghost" href={c.linkedin} rel="noopener">LinkedIn ↗</a></li>
-    <li><a class="btn btn-ghost" href={c.youtube} rel="noopener">YouTube ↗</a></li>
-    <li><a class="btn btn-ghost" href={c.itch} rel="noopener">itch.io ↗</a></li>
+    {[
+      ['Email', c.email, `mailto:${c.email}`],
+      ['WhatsApp ↗', c.phone, c.whatsapp],
+      ['Call', c.phone, `tel:${c.tel}`],
+      ['LinkedIn ↗', 'atharva-shewale', c.linkedin],
+      ['YouTube ↗', 'Portfolio playlist', c.youtube],
+      ['itch.io ↗', 'Frequency Zero', c.itch],
+    ].map(([label, value, href]) => (
+      <li><a class="contact-row" href={href} rel={href.startsWith('http') ? 'noopener' : undefined}><span class="label">{label}</span><span class="body-sm">{value}</span></a></li>
+    ))}
   </ul>
 </section>
 
@@ -52,7 +57,18 @@ const c = profile.contact;
   .timeline h3 { margin-block: var(--spacing-sm); }
   .timeline ul, .edu { padding-left: var(--spacing-md); max-width: 72ch; }
   .edu-h { margin-top: var(--spacing-xl); }
-  .contact { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: var(--spacing-md); }
-  .contact li { display: flex; align-items: center; gap: var(--spacing-md); }
+  .contact { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--spacing-sm); }
+  .contact-row { display: flex; justify-content: space-between; align-items: baseline; gap: var(--spacing-md); padding: var(--spacing-md); border: 1.5px solid var(--color-border); border-radius: var(--rounded-sm); text-decoration: none; }
+  .contact-row:hover { border-color: var(--color-on-surface); }
+  .contact-row .label { color: var(--color-on-surface); }
+  .contact-row .body-sm { color: var(--color-on-surface-muted); overflow-wrap: anywhere; text-align: right; }
+  .contact li:first-child .contact-row { border-color: var(--color-primary); }
   @media (max-width: 1023px) { .about { grid-template-columns: 1fr; } }
+  @media (max-width: 767px) {
+    .block { padding-block: var(--spacing-xl); }
+    .block > h2 { margin-bottom: var(--spacing-lg); }
+    .timeline { gap: var(--spacing-lg); }
+    .timeline > li { padding-left: var(--spacing-md); }
+    .contact-row { padding: var(--spacing-sm) var(--spacing-md); }
+  }
 </style>

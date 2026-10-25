@@ -51,7 +51,7 @@ test.describe('phone', () => {
 test('mode toggle on a project page goes home in that mode', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/work/frequency-zero');
-  await page.getByRole('button', { name: 'Quick start' }).click();
+  await page.getByRole('button', { name: 'List view' }).click();
   await expect(page).toHaveURL(/\/$/);
   await expect(page.locator('html')).toHaveAttribute('data-mode', 'quick');
 });

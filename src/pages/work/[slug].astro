@@ -20,17 +20,19 @@ const hasManual = d.tier === 'full';
     <h1 class="h-lg">{d.title}</h1>
     <p class="prompt lede">{d.oneLine}</p>
 
-    {hasManual && (
-      <div class="tabs" data-tabs role="tablist" aria-label="Project sections" hidden>
-        <button class="btn btn-ghost" role="tab" id="tab-box" aria-controls="panel-box" type="button">Back of box</button>
-        <button class="btn btn-ghost" role="tab" id="tab-manual" aria-controls="panel-manual" type="button">Manual</button>
-      </div>
-    )}
-    {d.links.length > 0 && (
-      <div class="tabs links">
-        {d.links.map((l) => <a class="btn btn-ghost" href={l.href} rel="noopener">{l.label} ↗</a>)}
-      </div>
-    )}
+    <div class="tab-row">
+      {hasManual && (
+        <div class="tabs" data-tabs role="tablist" aria-label="Project sections" hidden>
+          <button class="btn btn-ghost" role="tab" id="tab-box" aria-controls="panel-box" type="button">Back of box</button>
+          <button class="btn btn-ghost" role="tab" id="tab-manual" aria-controls="panel-manual" type="button">Manual</button>
+        </div>
+      )}
+      {d.links.length > 0 && (
+        <div class="tabs links">
+          {d.links.map((l) => <a class="btn btn-ghost" href={l.href} rel="noopener">{l.label} ↗</a>)}
+        </div>
+      )}
+    </div>
 
     <section id="panel-box" role={hasManual ? 'tabpanel' : undefined} aria-labelledby={hasManual ? 'tab-box' : undefined}>
       <BackOfBox project={project}><Content /></BackOfBox>
@@ -54,6 +56,8 @@ const hasManual = d.tier === 'full';
   .page { padding-block: var(--spacing-xl) var(--spacing-3xl); display: grid; gap: var(--spacing-lg); }
   .back-link { text-decoration: none; }
   .lede { margin: 0; max-width: 68ch; }
+  .tab-row { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
+  .tab-row:empty { display: none; }
   .tabs { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
   .tabs[hidden] { display: none; }
   .tabs [aria-selected="true"] { background: var(--color-paper); color: var(--color-ink); border-color: var(--color-paper); }

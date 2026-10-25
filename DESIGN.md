@@ -25,32 +25,32 @@ colors:
 
 typography:
   display:
-    fontFamily: Silkscreen
-    fontSize: 64px
-    fontWeight: 700
+    fontFamily: Jersey 10
+    fontSize: 80px
+    fontWeight: 400
     lineHeight: 1.0
     letterSpacing: 0.04em
   headline-lg:
-    fontFamily: Silkscreen
-    fontSize: 40px
-    fontWeight: 700
+    fontFamily: Jersey 10
+    fontSize: 48px
+    fontWeight: 400
     lineHeight: 1.1
     letterSpacing: 0.06em
   headline-md:
-    fontFamily: Silkscreen
-    fontSize: 24px
-    fontWeight: 700
+    fontFamily: Jersey 10
+    fontSize: 32px
+    fontWeight: 400
     lineHeight: 1.2
     letterSpacing: 0.08em
   title:
-    fontFamily: Silkscreen
-    fontSize: 16px
-    fontWeight: 700
+    fontFamily: Jersey 10
+    fontSize: 22px
+    fontWeight: 400
     lineHeight: 1.25
     letterSpacing: 0.14em
   label-caps:
-    fontFamily: Silkscreen
-    fontSize: 13px
+    fontFamily: Jersey 10
+    fontSize: 17px
     fontWeight: 400
     lineHeight: 1.3
     letterSpacing: 0.22em
@@ -254,12 +254,12 @@ Assignment: eVaColregs blue, Frequency Zero red, Saridena ArchViz green, CtrlAlt
 
 Two faces, split by job:
 
-- **Silkscreen** (OFL, Google Fonts): pixel display face. Names, headings, button labels, nav, chip labels. Always uppercase. Pixel faces render crisp only on their grid, so display sizes snap to multiples of 8px (16, 24, 40, 64). Tracking is positive at every size, the one deliberate exception to "negative tracking at display": bitmap letterforms collide without air.
+- **Jersey 10** (OFL, Google Fonts): condensed arcade-scoreboard pixel face, chosen over Jersey 10 for legibility on phones. Names, headings, button labels, nav, chip labels. Always uppercase, one weight (400; no faux bold). Light positive tracking at every size: bitmap letterforms collide without air.
 - **IBM Plex Mono** (OFL): everything you actually read. Body, problem/approach/result lines, spec-sheet rows, metadata. Weights 400 and 600 only. The `>` prompt prefix on short statements is part of the voice.
 
-Fallback stacks: `Silkscreen, "Courier New", monospace` and `"IBM Plex Mono", ui-monospace, Consolas, monospace`. Self-host both as WOFF2 subsets with `font-display: swap`.
+Fallback stacks: `"Jersey 10", "Arial Narrow", sans-serif` and `"IBM Plex Mono", ui-monospace, Consolas, monospace`. Self-host both as WOFF2 subsets with `font-display: swap`.
 
-Never set paragraphs in Silkscreen. Never set more than three lines of anything in display size.
+Never set paragraphs in Jersey 10. Never set more than three lines of anything in display size.
 
 ## Layout
 
@@ -308,11 +308,11 @@ Borders: 1.5px seam grey on ghost buttons on charcoal; 1.5px ink on ghost button
 ## Do's and Don'ts
 
 - Do give every 3D interaction a keyboard path and a Quick Start equivalent.
-- Do keep signal red for actions and selection only; emphasis elsewhere uses Silkscreen or weight 600.
+- Do keep signal red for actions and selection only; emphasis elsewhere uses Jersey 10 or weight 600.
 - Do use lamp red, not signal red, for any red text on charcoal.
 - Do keep each spine colour inside its own project.
-- Do snap Silkscreen sizes to multiples of 8px from 16px up.
-- Don't set body copy, bullet lists or anything over three lines in Silkscreen.
+- Do keep Jersey 10 at weight 400 and 15px or larger; it is condensed, so size it up rather than bolding it.
+- Don't set body copy, bullet lists or anything over three lines in Jersey 10.
 - Don't add a second accent colour, gradients, glow or glass effects.
 - Don't use neutral black drop shadows or blurred shadows; offsets are hard and charcoal-tinted.
 - Don't show PCB green or contact gold outside the cartridge interior.
