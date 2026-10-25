@@ -84,3 +84,12 @@ test.describe('crate', () => {
     await expect(snd).toHaveAttribute('aria-pressed', 'true');
   });
 });
+
+test('narrowing the window after load forces Quick Start', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/');
+  await expect(page.locator('html')).toHaveAttribute('data-mode', 'full');
+  await page.setViewportSize({ width: 375, height: 812 });
+  await expect(page.locator('html')).toHaveAttribute('data-mode', 'quick');
+  await expect(page.locator('[data-crate]')).toBeHidden();
+});

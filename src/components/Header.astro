@@ -39,6 +39,10 @@ const nav = [
 <script>
   import { initSoundToggle } from '../scripts/sound';
   initSoundToggle();
+  for (const q of ['(max-width: 767px)', '(prefers-reduced-motion: reduce)']) {
+    const m = matchMedia(q);
+    m.addEventListener('change', () => { if (m.matches) document.documentElement.dataset.mode = 'quick'; });
+  }
   const root = document.documentElement;
   document.querySelectorAll('[data-mode-toggle]').forEach((btn) =>
     btn.addEventListener('click', () => {

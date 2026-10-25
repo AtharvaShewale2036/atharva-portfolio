@@ -5,7 +5,7 @@ const enabled = (): boolean => {
   try { return localStorage.getItem(KEY) === 'on'; } catch { return false; }
 };
 
-// Square-wave blip; only ever called after a user gesture, so the AudioContext may start.
+// Square-wave blip; the AudioContext starts suspended until a user gesture, so nothing plays before one.
 export function playBlip(kind: 'flip' | 'select'): void {
   if (!enabled()) return;
   ctx ??= new AudioContext();
