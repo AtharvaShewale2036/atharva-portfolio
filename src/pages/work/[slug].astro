@@ -20,11 +20,17 @@ const ogImage = d.cover?.src ?? (d.videos[0] ? `https://i.ytimg.com/vi/${d.video
     <h1 class="h-lg">{d.title}</h1>
     <p class="prompt lede">{d.oneLine}</p>
 
-    <div class="tabs" data-tabs role="tablist" aria-label="Project sections" hidden>
-      <button class="btn btn-ghost" role="tab" id="tab-box" aria-controls="panel-box" type="button">Back of box</button>
-      {hasManual && <button class="btn btn-ghost" role="tab" id="tab-manual" aria-controls="panel-manual" type="button">Manual</button>}
-      {d.links.map((l) => <a class="btn btn-ghost" href={l.href} rel="noopener">{l.label} ↗</a>)}
-    </div>
+    {hasManual && (
+      <div class="tabs" data-tabs role="tablist" aria-label="Project sections" hidden>
+        <button class="btn btn-ghost" role="tab" id="tab-box" aria-controls="panel-box" type="button">Back of box</button>
+        <button class="btn btn-ghost" role="tab" id="tab-manual" aria-controls="panel-manual" type="button">Manual</button>
+      </div>
+    )}
+    {d.links.length > 0 && (
+      <div class="tabs links">
+        {d.links.map((l) => <a class="btn btn-ghost" href={l.href} rel="noopener">{l.label} ↗</a>)}
+      </div>
+    )}
 
     <section id="panel-box" role="tabpanel" aria-labelledby="tab-box">
       <BackOfBox project={project}><Content /></BackOfBox>

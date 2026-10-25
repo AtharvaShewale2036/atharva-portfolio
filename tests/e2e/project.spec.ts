@@ -42,3 +42,26 @@ test.describe('phone', () => {
     expect(overflow).toBeLessThanOrEqual(0);
   });
 });
+
+test('light page has no tablist tabs', async ({ page }) => {
+  await page.goto('/work/trapped-in-terror');
+  await expect(page.getByRole('tab')).toHaveCount(0);
+});
+
+test.describe('no JS', () => {
+  test.use({ javaScriptEnabled: false });
+  test('external links stay visible', async ({ page }) => {
+    await page.goto('/work/frequency-zero');
+    await expect(page.getByRole('link', { name: 'Play on itch.io ↗' })).toBeVisible();
+  });
+});
+
+test.describe('reduced motion', () => {
+  test.use({ viewport: { width: 1440, height: 900 } });
+  test('box art is not tilted', async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.goto('/work/frequency-zero');
+    const t = await page.locator('.box-art').first().evaluate((el) => getComputedStyle(el).transform);
+    expect(t).toBe('none');
+  });
+});

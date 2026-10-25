@@ -45,5 +45,6 @@ const rows = [
   .facts { list-style: none; padding: 0; margin: 0; font-weight: 600; }
   .videos { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--spacing-md); }
   .tools { color: var(--color-ink-muted); margin: 0; }
+  @media (prefers-reduced-motion: reduce) { .box-art { transform: none; } }
   @media (max-width: 1023px) { .back { grid-template-columns: 1fr; } .box-art { transform: none; max-width: 320px; } }
 </style>
