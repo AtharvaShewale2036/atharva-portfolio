@@ -1,0 +1,49 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Cartridge from './Cartridge.astro';
+import LiteYouTube from './LiteYouTube.astro';
+
+interface Props { project: CollectionEntry<'projects'> }
+const d = Astro.props.project.data;
+const rows = [
+  ['role', 'Role', d.role],
+  ['client', 'Client', d.client],
+  ['engine', 'Engine', d.engine],
+  ['platform', 'Platform', d.platform],
+  ['team', 'Team', d.team],
+  ['dates', 'Dates', d.dates],
+  ['status', 'Status', d.status],
+].filter(([, , v]) => v) as [string, string, string][];
+---
+<div class="back">
+  <div class="box-art">
+    <Cartridge size="box" title={d.title} spine={d.spine} cover={d.cover} youtubeId={d.videos[0]?.youtubeId} caption={d.tagline ?? d.genre} />
+  </div>
+  <div class="panel summary">
+    <header class="panel-header label"><span>Back of box</span><span>{d.genre}</span></header>
+    <div class="summary-body">
+      <dl>{rows.map(([key, label, value]) => (<div data-block={key}><dt class="label">{label}</dt><dd>{value}</dd></div>))}</dl>
+      <div class="pitch"><slot /></div>
+      {d.facts.length > 0 && <ul class="facts" data-block="facts">{d.facts.map((f) => <li class="prompt">{f}</li>)}</ul>}
+      {d.videos.length > 0 && <div class="videos" data-block="videos">{d.videos.map((v) => <LiteYouTube id={v.youtubeId} title={v.title} />)}</div>}
+      {d.features.length > 0 && (
+        <div data-block="features"><h2 class="title">Features</h2><ul>{d.features.map((f) => <li>{f}</li>)}</ul></div>
+      )}
+      {d.tools.length > 0 && <p class="body-sm tools" data-block="tools">{d.tools.join(' · ')}</p>}
+    </div>
+  </div>
+</div>
+
+<style>
+  .back { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: var(--spacing-xl); align-items: start; }
+  .box-art { transform: perspective(1200px) rotateY(14deg); }
+  .summary-body { padding: var(--spacing-lg); display: grid; gap: var(--spacing-lg); }
+  dl { margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--spacing-md); }
+  dt { color: var(--color-primary); }
+  dd { margin: var(--spacing-xs) 0 0; font-size: 14px; }
+  .pitch :global(p) { margin: 0; max-width: 68ch; }
+  .facts { list-style: none; padding: 0; margin: 0; font-weight: 600; }
+  .videos { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--spacing-md); }
+  .tools { color: var(--color-ink-muted); margin: 0; }
+  @media (max-width: 1023px) { .back { grid-template-columns: 1fr; } .box-art { transform: none; max-width: 320px; } }
+</style>

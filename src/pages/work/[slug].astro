@@ -1,0 +1,52 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import BackOfBox from '../../components/BackOfBox.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({ params: { slug: project.id }, props: { project } }));
+}
+
+const { project } = Astro.props;
+const d = project.data;
+const { Content } = await render(project);
+const hasManual = d.tier === 'full';
+const ogImage = d.cover?.src ?? (d.videos[0] ? `https://i.ytimg.com/vi/${d.videos[0].youtubeId}/hqdefault.jpg` : '/og.png');
+---
+<Base title={`${d.title} · Atharva Shewale`} description={d.oneLine} image={ogImage}>
+  <div class="container page">
+    <a class="label muted back-link" href="/#projects">‹ Back to crate</a>
+    <h1 class="h-lg">{d.title}</h1>
+    <p class="prompt lede">{d.oneLine}</p>
+
+    <div class="tabs" data-tabs role="tablist" aria-label="Project sections" hidden>
+      <button class="btn btn-ghost" role="tab" id="tab-box" aria-controls="panel-box" type="button">Back of box</button>
+      {hasManual && <button class="btn btn-ghost" role="tab" id="tab-manual" aria-controls="panel-manual" type="button">Manual</button>}
+      {d.links.map((l) => <a class="btn btn-ghost" href={l.href} rel="noopener">{l.label} ↗</a>)}
+    </div>
+
+    <section id="panel-box" role="tabpanel" aria-labelledby="tab-box">
+      <BackOfBox project={project}><Content /></BackOfBox>
+    </section>
+    {hasManual && (
+      <section id="panel-manual" role="tabpanel" aria-labelledby="tab-manual">
+        <p class="body-sm muted">Manual</p>
+      </section>
+    )}
+  </div>
+</Base>
+
+<script>
+  import { initTabs } from '../../scripts/project';
+  initTabs();
+</script>
+
+<style>
+  .page { padding-block: var(--spacing-xl) var(--spacing-3xl); display: grid; gap: var(--spacing-lg); }
+  .back-link { text-decoration: none; }
+  .lede { margin: 0; max-width: 68ch; }
+  .tabs { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
+  .tabs[hidden] { display: none; }
+  .tabs [aria-selected="true"] { background: var(--color-paper); color: var(--color-ink); border-color: var(--color-paper); }
+</style>

@@ -1,0 +1,21 @@
+---
+interface Props { id: string; title: string }
+const { id, title } = Astro.props;
+---
+<a class="lite-yt" href={`https://www.youtube.com/watch?v=${id}`} data-yt={id} data-title={title}>
+  <img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt="" width="480" height="360" loading="lazy" decoding="async" />
+  <span class="play label"><span class="visually-hidden">Play video: </span>▶ {title}</span>
+</a>
+
+<script>
+  import { initLiteYouTube } from '../scripts/lite-youtube';
+  initLiteYouTube();
+</script>
+
+<style>
+  .lite-yt { position: relative; display: block; aspect-ratio: 16 / 9; background: var(--color-ink); overflow: hidden; border-radius: var(--rounded-sm); }
+  .lite-yt img { width: 100%; height: 100%; object-fit: cover; opacity: 0.75; }
+  .play { position: absolute; left: var(--spacing-md); bottom: var(--spacing-md); background: var(--color-primary); color: var(--color-paper); padding: var(--spacing-sm) var(--spacing-md); }
+  .lite-yt:hover img { opacity: 1; }
+  .lite-yt :global(iframe) { width: 100%; height: 100%; border: 0; }
+</style>

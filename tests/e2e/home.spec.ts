@@ -70,7 +70,7 @@ test.describe('crate', () => {
     await expect(page.locator('[data-crate-live]')).toContainText('02 of 06');
   });
 
-  test.fixme('pull out opens the project page', async ({ page }) => {
+  test('pull out opens the project page', async ({ page }) => {
     await page.goto('/');
     await page.locator('[data-crate-card]:not([hidden])').getByRole('link', { name: /pull out/i }).click();
     await expect(page).toHaveURL(/\/work\/evacolregs/);
