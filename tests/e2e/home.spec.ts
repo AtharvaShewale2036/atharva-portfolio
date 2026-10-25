@@ -93,3 +93,12 @@ test('narrowing the window after load forces Quick Start', async ({ page }) => {
   await expect(page.locator('html')).toHaveAttribute('data-mode', 'quick');
   await expect(page.locator('[data-crate]')).toBeHidden();
 });
+
+test('widening the window after a narrow load restores full mode', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.goto('/');
+  await expect(page.locator('html')).toHaveAttribute('data-mode', 'quick');
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await expect(page.locator('html')).toHaveAttribute('data-mode', 'full');
+  await expect(page.locator('[data-crate]')).toBeVisible();
+});

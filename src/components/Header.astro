@@ -39,9 +39,15 @@ const nav = [
 <script>
   import { initSoundToggle } from '../scripts/sound';
   initSoundToggle();
-  for (const q of ['(max-width: 767px)', '(prefers-reduced-motion: reduce)']) {
-    const m = matchMedia(q);
-    m.addEventListener('change', () => { if (m.matches) document.documentElement.dataset.mode = 'quick'; });
+  const qs = ['(max-width: 767px)', '(prefers-reduced-motion: reduce)'].map((q) => matchMedia(q));
+  for (const m of qs) {
+    m.addEventListener('change', () => {
+      const forced = qs.some((x) => x.matches);
+      let saved: string | null = null;
+      try { saved = localStorage.getItem('mode'); } catch {}
+      if (forced) document.documentElement.dataset.mode = 'quick';
+      else if (saved !== 'quick') document.documentElement.dataset.mode = 'full';
+    });
   }
   const root = document.documentElement;
   document.querySelectorAll('[data-mode-toggle]').forEach((btn) =>

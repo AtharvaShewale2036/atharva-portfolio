@@ -5,10 +5,11 @@ const enabled = (): boolean => {
   try { return localStorage.getItem(KEY) === 'on'; } catch { return false; }
 };
 
-// Square-wave blip; the AudioContext starts suspended until a user gesture, so nothing plays before one.
+// Square-wave blip. A context created before any click (e.g. by a wheel flip) starts suspended, so resume it; browsers allow that once the user has interacted.
 export function playBlip(kind: 'flip' | 'select'): void {
   if (!enabled()) return;
   ctx ??= new AudioContext();
+  if (ctx.state === 'suspended') void ctx.resume();
   const osc = ctx.createOscillator();
   const gain = ctx.createGain();
   osc.type = 'square';
