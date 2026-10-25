@@ -1,0 +1,32 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { spineVar, type Spine } from '../lib/spine';
+
+interface Props { title: string; spine: Spine; cover?: ImageMetadata; youtubeId?: string; caption: string; size?: 'crate' | 'box' }
+const { title, spine, cover, youtubeId, caption, size = 'crate' } = Astro.props;
+---
+<div class={`cartridge ${size}`} style={`--spine:${spineVar(spine)}`}>
+  <div class="grooves" aria-hidden="true"></div>
+  <div class="label-card">
+    <p class="cart-title">{title}</p>
+    <div class="window">
+      {cover ? <Image src={cover} alt="" widths={[240, 480]} sizes="240px" /> :
+       youtubeId ? <img src={`https://i.ytimg.com/vi/${youtubeId}/mqdefault.jpg`} alt="" width="320" height="180" loading="lazy" decoding="async" /> :
+       <span class="wave" aria-hidden="true"></span>}
+    </div>
+    <p class="caption">{caption}</p>
+  </div>
+</div>
+
+<style>
+  .cartridge { width: 260px; aspect-ratio: 0.82; background: var(--color-surface-raised); border-radius: var(--rounded-lg); padding: var(--spacing-md); box-shadow: 8px 10px 0 rgba(14, 13, 16, 0.55); border-top: 6px solid var(--spine); }
+  .cartridge.box { width: 100%; max-width: 360px; }
+  .grooves { height: 12px; margin-bottom: var(--spacing-md); background: repeating-linear-gradient(to bottom, var(--color-border) 0 1px, transparent 1px 4px); }
+  .label-card { background: var(--color-ink); border-radius: var(--rounded-sm); overflow: hidden; }
+  .cart-title { margin: 0; background: var(--spine); color: var(--color-paper); font: 700 16px/1.2 var(--font-display); letter-spacing: 0.1em; text-transform: uppercase; padding: var(--spacing-sm) var(--spacing-md); }
+  .window { aspect-ratio: 16 / 10; display: grid; place-items: center; overflow: hidden; }
+  .window :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .wave { width: 70%; height: 2px; background: var(--spine); box-shadow: 0 -10px 0 -1px var(--spine), 0 10px 0 -1px var(--spine); }
+  .caption { margin: 0; background: var(--color-paper); color: var(--color-ink); font-size: 12px; padding: var(--spacing-xs) var(--spacing-md); text-transform: uppercase; letter-spacing: 0.1em; }
+</style>

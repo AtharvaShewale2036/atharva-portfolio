@@ -46,3 +46,41 @@ test('contact links are real', async ({ page }) => {
   await expect(page.locator('#contact a[href="https://wa.me/917041142749"]')).toHaveCount(1);
   await expect(page.locator('#contact a[href="tel:+917041142749"]')).toHaveCount(1);
 });
+
+test.describe('crate', () => {
+  test.use({ viewport: { width: 1440, height: 900 } });
+
+  test('keyboard flips cartridges and clamps at the end', async ({ page }) => {
+    await page.goto('/');
+    const crate = page.locator('[data-crate]');
+    await crate.focus();
+    await expect(page.locator('[data-crate-live]')).toContainText('01 of 06');
+    await page.keyboard.press('ArrowRight');
+    await expect(page.locator('[data-crate-live]')).toContainText('02 of 06, Frequency Zero');
+    await expect(page.locator('[data-crate-card]:not([hidden])')).toContainText('Lead Gameplay Programmer');
+    await page.keyboard.press('End');
+    await page.keyboard.press('ArrowRight');
+    await expect(page.locator('[data-crate-live]')).toContainText('06 of 06');
+  });
+
+  test('a burst of wheel events flips once', async ({ page }) => {
+    await page.goto('/');
+    await page.locator('[data-crate]').hover();
+    for (let i = 0; i < 8; i++) await page.mouse.wheel(0, 40);
+    await expect(page.locator('[data-crate-live]')).toContainText('02 of 06');
+  });
+
+  test.fixme('pull out opens the project page', async ({ page }) => {
+    await page.goto('/');
+    await page.locator('[data-crate-card]:not([hidden])').getByRole('link', { name: /pull out/i }).click();
+    await expect(page).toHaveURL(/\/work\/evacolregs/);
+  });
+
+  test('sound is off by default and toggles', async ({ page }) => {
+    await page.goto('/');
+    const snd = page.getByRole('button', { name: 'Sound effects' });
+    await expect(snd).toHaveAttribute('aria-pressed', 'false');
+    await snd.click();
+    await expect(snd).toHaveAttribute('aria-pressed', 'true');
+  });
+});

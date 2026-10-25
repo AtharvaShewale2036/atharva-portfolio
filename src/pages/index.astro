@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import QuickStart from '../components/QuickStart.astro';
 import Profile from '../components/Profile.astro';
+import Crate from '../components/Crate.astro';
 import { profile } from '../data/profile';
 
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
@@ -17,6 +18,7 @@ const jsonLd = {
 };
 ---
 <Base title="Atharva Shewale · UE5 Developer" description={profile.intro} jsonLd={jsonLd}>
+  <Crate projects={projects} />
   <QuickStart projects={projects} />
   <Profile />
 </Base>

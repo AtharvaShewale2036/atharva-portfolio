@@ -1,0 +1,76 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Cartridge from './Cartridge.astro';
+import { spineVar } from '../lib/spine';
+
+interface Props { projects: CollectionEntry<'projects'>[] }
+const { projects } = Astro.props;
+const n = String(projects.length).padStart(2, '0');
+---
+<section class="crate-view container" data-show="full" aria-labelledby="crate-h">
+  <div class="intro">
+    <h1 id="crate-h" class="h-display">Dig through my crate</h1>
+    <p class="prompt">Every project I've shipped or prototyped, filed like records.</p>
+    <p class="body-sm muted">Scroll, ← → or click a cartridge to flip through.</p>
+  </div>
+
+  <div class="crate" data-crate tabindex="0" role="group" aria-roledescription="carousel" aria-label="Projects crate">
+    <p class="visually-hidden" aria-live="polite" data-crate-live></p>
+    <div class="stack">
+      {projects.map((p, i) => (
+        <button class="cart" type="button" data-cart data-title={p.data.title} style={`--pos:${i}`} aria-label={`${String(i + 1).padStart(2, '0')} ${p.data.title}`} tabindex="-1">
+          <Cartridge title={p.data.title} spine={p.data.spine} cover={p.data.cover} youtubeId={p.data.videos[0]?.youtubeId} caption={`${p.data.status.split(' ')[0]} · ${p.data.engine.split(' ')[0]}`} />
+        </button>
+      ))}
+    </div>
+    <div class="box-front" aria-hidden="true"><span class="label">Crate 01 · {projects.length} cartridges</span></div>
+  </div>
+
+  <div class="cards">
+    {projects.map((p, i) => (
+      <article class="panel card" data-crate-card hidden={i !== 0} style={`--spine:${spineVar(p.data.spine)}`}>
+        <header class="panel-header label"><span>{String(i + 1).padStart(2, '0')} / {n} · Now flipped to</span></header>
+        <div class="card-body">
+          <h2 class="h-md">{p.data.title}</h2>
+          <p class="body-sm">{p.data.genre} · {p.data.engine.split(' · ')[0]} · {p.data.platform.split(' · ')[0]}</p>
+          <p class="role prompt">{p.data.role}</p>
+          <p class="prompt">{p.data.oneLine}</p>
+          <div class="actions">
+            <a class="btn btn-primary" href={`/work/${p.id}`}>▶ Pull out</a>
+            <a class="btn btn-ghost-paper" href="#projects" data-to-quick>List view</a>
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<script>
+  import { initCrate } from '../scripts/crate';
+  const root = document.querySelector<HTMLElement>('[data-crate]');
+  if (root) initCrate(root);
+  document.querySelectorAll('[data-to-quick]').forEach((a) =>
+    a.addEventListener('click', () => {
+      document.documentElement.dataset.mode = 'quick';
+      try { localStorage.setItem('mode', 'quick'); } catch {}
+    }),
+  );
+</script>
+
+<style>
+  :global(html[data-mode="full"]) .crate-view { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 4fr) minmax(0, 3fr); gap: var(--spacing-xl); align-items: center; min-height: calc(100vh - 120px); padding-block: var(--spacing-2xl); }
+  .intro .prompt { margin-top: var(--spacing-lg); max-width: 40ch; }
+  .crate { position: relative; height: 520px; perspective: 1400px; outline-offset: 8px; }
+  .stack { position: absolute; inset: 0 0 120px; transform-style: preserve-3d; }
+  .cart { position: absolute; left: 50%; bottom: 0; padding: 0; border: 0; background: none; cursor: pointer;
+    transform: translateX(calc(-50% + var(--pos) * 26px)) translateZ(calc(var(--pos) * -40px)) rotateY(-24deg);
+    transition: transform 280ms cubic-bezier(.2, .7, .2, 1); z-index: calc(10 - var(--pos)); }
+  .cart[data-front] { transform: translateX(-60%) translateY(-60px) rotateY(-12deg) rotateX(8deg); }
+  .box-front { position: absolute; left: 10%; right: 10%; bottom: 0; height: 180px; background: var(--color-surface-raised); border-radius: var(--rounded-md); transform: rotateX(8deg); box-shadow: 8px 10px 0 rgba(14, 13, 16, 0.55); display: flex; align-items: end; padding: var(--spacing-lg); z-index: 20; }
+  .box-front .label { color: var(--color-on-surface-muted); }
+  .card-body { padding: var(--spacing-lg); display: grid; gap: var(--spacing-sm); }
+  .card-body p { margin: 0; }
+  .role { color: var(--color-primary); }
+  .actions { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; margin-top: var(--spacing-md); }
+  @media (max-width: 1199px) { :global(html[data-mode="full"]) .crate-view { grid-template-columns: 1fr; } .crate { height: 460px; } }
+</style>

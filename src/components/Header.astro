@@ -37,6 +37,8 @@ const nav = [
 </style>
 
 <script>
+  import { initSoundToggle } from '../scripts/sound';
+  initSoundToggle();
   const root = document.documentElement;
   document.querySelectorAll('[data-mode-toggle]').forEach((btn) =>
     btn.addEventListener('click', () => {
