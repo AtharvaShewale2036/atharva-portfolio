@@ -22,6 +22,8 @@ const { title, spine, cover, youtubeId, caption, size = 'crate' } = Astro.props;
 <style>
   .cartridge { display: flex; flex-direction: column; width: 220px; height: 100%; background: var(--color-surface-raised); border-radius: var(--rounded-lg); padding: var(--spacing-md); border-top: 6px solid var(--spine); }
   .cartridge.box { width: 100%; max-width: 360px; height: auto; box-shadow: var(--shadow-paper); }
+  /* In the crate the slab's own top face carries the spine colour, so the front stays square-edged to meet it. */
+  .cartridge.crate { border-top: 0; border-radius: var(--rounded-sm); box-shadow: inset 0 1px 0 color-mix(in srgb, var(--color-on-surface) 18%, transparent), inset -1px 0 0 color-mix(in srgb, var(--color-ink) 40%, transparent); }
   .grooves { flex: none; height: 12px; margin-bottom: var(--spacing-md); background: repeating-linear-gradient(to bottom, var(--color-border) 0 1px, transparent 1px 4px); }
   .label-card { flex: 1; display: flex; flex-direction: column; min-height: 0; background: var(--color-ink); border-radius: var(--rounded-sm); overflow: hidden; }
   .cart-title { margin: 0; background: var(--spine); color: var(--color-paper); font: 700 16px/1.2 var(--font-display); letter-spacing: 0.1em; text-transform: uppercase; padding: var(--spacing-sm) var(--spacing-md); }

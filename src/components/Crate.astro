@@ -83,9 +83,12 @@ const n = String(projects.length).padStart(2, '0');
   .cart:focus-visible { outline: none; }
   .cart:focus-visible .front { outline: 2px solid var(--color-primary-bright); outline-offset: 4px; }
   .front { inset: 0; transform: translateZ(calc(var(--d) / 2)); }
-  .top { left: 0; top: 0; width: var(--w); height: var(--d); background: var(--spine); transform-origin: top; transform: translateZ(calc(var(--d) / 2)) rotateX(-90deg); }
-  .cart .side { top: 0; left: var(--w); width: var(--d); height: var(--h); transform-origin: left;
-    background: color-mix(in srgb, var(--color-surface-raised) 60%, var(--color-ink)); transform: translateZ(calc(var(--d) / 2)) rotateY(90deg); }
+  /* Faces overlap the front by 1px so no hairline gap shows at the edges. */
+  .top { left: 0; top: 0; width: var(--w); height: calc(var(--d) + 1px); transform-origin: top; transform: translateZ(calc(var(--d) / 2 + 1px)) rotateX(-90deg);
+    background: linear-gradient(to bottom, color-mix(in srgb, var(--spine) 85%, white), var(--spine) 40%, color-mix(in srgb, var(--spine) 70%, var(--color-ink))); }
+  .cart .side { top: 0; left: calc(var(--w) - 1px); width: calc(var(--d) + 1px); height: var(--h); transform-origin: left; transform: translateZ(calc(var(--d) / 2 + 1px)) rotateY(90deg);
+    background: linear-gradient(to right, color-mix(in srgb, var(--color-surface-raised) 70%, var(--color-ink)), color-mix(in srgb, var(--color-surface-raised) 45%, var(--color-ink)));
+    box-shadow: inset 0 6px 0 var(--spine); }
 
   .box { position: absolute; inset: 0; transform-style: preserve-3d; pointer-events: none; }
   .wall { top: calc(var(--h) - var(--wall) + 20px); height: var(--wall); }
