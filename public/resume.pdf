@@ -1,74 +1,480 @@
 %PDF-1.4
-%“Œ‹ž ReportLab Generated PDF document (opensource)
+%âãÏÓ
 1 0 obj
 <<
-/F1 2 0 R /F2 3 0 R
+/Producer (pypdf)
 >>
 endobj
 2 0 obj
 <<
-/BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font
+/Type /Pages
+/Count 1
+/Kids [ 4 0 R ]
 >>
 endobj
 3 0 obj
 <<
-/BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
+/Type /Catalog
+/Pages 2 0 R
+/Outlines 9 0 R
 >>
 endobj
 4 0 obj
 <<
-/Contents 8 0 R /MediaBox [ 0 0 612 792 ] /Parent 7 0 R /Resources <<
-/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
->> /Rotate 0 /Trans <<
-
->> 
-  /Type /Page
+/Contents 5 0 R
+/MediaBox [ 0 0 612 792 ]
+/Resources <<
+/Font 6 0 R
+/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Parent 2 0 R
+/Annots [ 10 0 R ]
 >>
 endobj
 5 0 obj
 <<
-/PageMode /UseNone /Pages 7 0 R /Type /Catalog
+/Length 10846
 >>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 39.6 739.6956 cm
+q
+.121569 .305882 .47451 rg
+BT 1 0 0 1 0 1.4744 Tm /F2 18.43 Tf 19.9044 TL (ATHARVA SHEWALE) Tj T* ET
+Q
+Q
+q
+1 0 0 1 39.6 737.2706 cm
+Q
+q
+1 0 0 1 39.6 725.3978 cm
+q
+BT 1 0 0 1 0 1.9788 Tm 11.8728 TL /F1 9.894 Tf .266667 .266667 .266667 rg (Unreal Engine 5 Developer \227 Interactive & Architectural Visualisation) Tj T* ET
+Q
+Q
+q
+1 0 0 1 39.6 722.0028 cm
+Q
+q
+1 0 0 1 39.6 710.8721 cm
+q
+BT 1 0 0 1 0 2.88575 Tm 11.13075 TL /F1 7.5 Tf .266667 .266667 .266667 rg (Goa, India  ) Tj (|) Tj (  +91 7041142749  ) Tj (|) Tj (  shatharva@gmail.com  ) Tj (|) Tj (  linkedin.com/in/atharva-shewale-3835b0250  ) Tj (|) Tj (  Showreel: youtube.com/playlist?list=PLP6aXjlbiNLc) Tj T* ET
+Q
+Q
+q
+1 0 0 1 39.6 702.1421 cm
+Q
+q
+1 0 0 1 39.6 683.7121 cm
+.121569 .305882 .47451 rg
+n 0 6.73 2.2 9.215 re f*
+BT /F2 9.7 Tf 11.64 TL ET
+.121569 .305882 .47451 rg
+BT 1 0 0 1 7.2 8.23 Tm (SUMMARY) Tj T* ET
+.721569 .780392 .839216 RG
+.6 w
+n 0 3.23 m 532.8 3.23 l S
+Q
+q
+1 0 0 1 39.6 680.8021 cm
+Q
+q
+1 0 0 1 39.6 634.5292 cm
+q
+BT 1 0 0 1 0 37.63988 Tm 11.56822 TL /F1 8.633 Tf .101961 .101961 .101961 rg (Unreal Engine 5 developer specialising in real-time interactive visualisation \227 ArchViz, VR/AR walkthroughs and simulation \227 delivered) Tj T* (across PC, touchscreen, Meta Quest and cloud deployment. Delivered a ) Tj /F2 8.633 Tf (INR 1.8 lakh) Tj /F1 8.633 Tf ( Unreal ArchViz project end to end as sole developer,) Tj T* (and currently building a real-time naval simulator in C++ and Blueprints for Naval Academy training. Comfortable owning both sides of the) Tj T* (pipeline: lighting, texturing and level dressing, plus the Blueprint and UMG systems that drive them.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 39.6 625.7992 cm
+Q
+q
+1 0 0 1 39.6 607.3692 cm
+.121569 .305882 .47451 rg
+n 0 6.73 2.2 9.215 re f*
+BT /F2 9.7 Tf 11.64 TL ET
+.121569 .305882 .47451 rg
+BT 1 0 0 1 7.2 8.23 Tm (WORK EXPERIENCE) Tj T* ET
+.721569 .780392 .839216 RG
+.6 w
+n 0 3.23 m 532.8 3.23 l S
+Q
+q
+1 0 0 1 39.6 603.4892 cm
+Q
+q
+1 0 0 1 39.6 592.4312 cm
+q
+BT 1 0 0 1 0 1.843 Tm 11.058 TL /F2 9.215 Tf .101961 .101961 .101961 rg (Freelance UE5 Developer \227 Gaming & ArchViz) Tj T* ET
+Q
+Q
+q
+1 0 0 1 39.6 591.2672 cm
+Q
+q
+1 0 0 1 39.6 581.0822 cm
+q
+BT 1 0 0 1 0 2.037 Tm 10.185 TL /F1 8.148 Tf .266667 .266667 .266667 rg (Self-employed  ) Tj (|) Tj (  Apr 2025 \226 Present) Tj T* ET
+Q
+Q
+q
+1 0 0 1 39.6 578.6572 cm
+Q
+q
+1 0 0 1 39.6 556.2114 cm
+q
+BT 1 0 0 1 9 13.8128 Tm -9 0 Td 11.2229 TL /F1 8.633 Tf .101961 .101961 .101961 rg (\226) Tj (  Delivered a ) Tj /F2 8.633 Tf (INR 1.8 lakh) Tj /F1 8.633 Tf ( Unreal Engine ArchViz project end to end as sole developer \227 scoping, implementation, optimisation and final) Tj T* 9 0 Td (deployment.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 39.6 555.0474 cm
+Q
+q
+1 0 0 1 39.6 532.6016 cm
+q
+BT 1 0 0 1 9 13.8128 Tm -9 0 Td 11.2229 TL /F1 8.633 Tf .101961 .101961 .101961 rg (\226) Tj (  Built interactive 3D environments for PC, touchscreen kiosks, VR and AR with modular Blueprint systems and reusable UMG interfaces,) Tj T* 9 0 Td (optimised to hold target frame rate on desktop and mobile-class hardware.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 39.6 531.4376 cm
+Q
+q
+1 0 0 1 39.6 526.5876 cm
+Q
+q
+1 0 0 1 39.6 515.5296 cm
+q
+BT 1 0 0 1 0 1.843 Tm 11.058 TL /F2 9.215 Tf .101961 .101961 .101961 rg (Game Developer \227 eDot Solutions) Tj T* ET
+Q
+Q
+q
+1 0 0 1 39.6 514.3656 cm
+Q
+q
+1 0 0 1 39.6 504.1806 cm
+q
+BT 1 0 0 1 0 2.037 Tm 10.185 TL /F1 8.148 Tf .266667 .266667 .266667 rg (Goa, India  ) Tj (|) Tj (  Full-time  ) Tj (|) Tj (  Aug 2025 \226 Present) Tj T* ET
+Q
+Q
+q
+1 0 0 1 39.6 501.7556 cm
+Q
+q
+1 0 0 1 39.6 479.3098 cm
+q
+BT 1 0 0 1 9 13.8128 Tm -9 0 Td 11.2229 TL /F1 8.633 Tf .101961 .101961 .101961 rg (\226) Tj (  Building a real-time naval simulator in UE5 with C++ and Blueprints, deployed to both cloud and local machines with physical hardware) Tj T* 9 0 Td (input rigs.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 39.6 478.1458 cm
+Q
+q
+1 0 0 1 39.6 455.7 cm
+q
+BT 1 0 0 1 9 13.8128 Tm -9 0 Td 11.2229 TL /F1 8.633 Tf .101961 .101961 .101961 rg (\226) Tj (  Developed AI-controlled ships with autonomous decision-making, procedurally generated scenarios, advanced physics and dynamic) Tj T* 9 0 Td (real-time lighting for authentic training conditions.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 39.6 454.536 cm
+Q
+q
+1 0 0 1 39.6 443.3131 cm
+q
+BT 1 0 0 1 9 2.5899 Tm -9 0 Td 11.2229 TL /F1 8.633 Tf .101961 .101961 .101961 rg (\226) Tj (  Dual-purpose product serving Naval Academy training and a public gaming release; live demo at colregs.ai.) Tj T* 9 0 Td ET
+Q
+Q
+q
+1 0 0 1 39.6 442.1491 cm
+Q
+q
+1 0 0 1 39.6 437.2991 cm
+Q
+q
+1 0 0 1 39.6 426.2411 cm
+q
+BT 1 0 0 1 0 1.843 Tm 11.058 TL /F2 9.215 Tf .101961 .101961 .101961 rg (UE5 Artist & Developer \(Intern\) \227 Saridena Constructions) Tj T* ET
+Q
+Q
+q
+1 0 0 1 39.6 425.0771 cm
+Q
+q
+1 0 0 1 39.6 414.8921 cm
+q
+BT 1 0 0 1 0 2.037 Tm 10.185 TL /F1 8.148 Tf .266667 .266667 .266667 rg (Hyderabad, India  ) Tj (|) Tj (  Oct 2024 \226 Apr 2025) Tj T* ET
+Q
+Q
+q
+1 0 0 1 39.6 412.4671 cm
+Q
+q
+1 0 0 1 39.6 390.0213 cm
+q
+BT 1 0 0 1 9 13.8128 Tm -9 0 Td 11.2229 TL /F1 8.633 Tf .101961 .101961 .101961 rg (\226) Tj (  Built VR/AR/XR walkthroughs, interactives, renders and cinematics for real-estate projects using Blueprints and UMG, including) Tj T* 9 0 Td (multiplayer walkthrough sessions.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 39.6 388.8573 cm
+Q
+q
+1 0 0 1 39.6 377.6344 cm
+q
+BT 1 0 0 1 9 2.5899 Tm -9 0 Td 11.2229 TL /F1 8.633 Tf .101961 .101961 .101961 rg (\226) Tj (  Handled level design, lighting and texturing for Meta Quest 2 and Android AR builds.) Tj T* 9 0 Td ET
+Q
+Q
+q
+1 0 0 1 39.6 376.4704 cm
+Q
+q
+1 0 0 1 39.6 371.6204 cm
+Q
+q
+1 0 0 1 39.6 360.5624 cm
+q
+BT 1 0 0 1 0 1.843 Tm 11.058 TL /F2 9.215 Tf .101961 .101961 .101961 rg (UE5 Gameplay Programmer \(Lead\) \227 Frequency Zero) Tj T* ET
+Q
+Q
+q
+1 0 0 1 39.6 359.3984 cm
+Q
+q
+1 0 0 1 39.6 349.2134 cm
+q
+BT 1 0 0 1 0 2.037 Tm 10.185 TL /F1 8.148 Tf .266667 .266667 .266667 rg (Collaborative indie project  ) Tj (|) Tj (  Oct 2025 \226 Present) Tj T* ET
+Q
+Q
+q
+1 0 0 1 39.6 346.7884 cm
+Q
+q
+1 0 0 1 39.6 324.3426 cm
+q
+BT 1 0 0 1 9 13.8128 Tm -9 0 Td 11.2229 TL /F1 8.633 Tf .101961 .101961 .101961 rg (\226) Tj (  Lead gameplay programming for a first-person atmospheric horror shooter, owning core player mechanics, combat and interaction) Tj T* 9 0 Td (systems across a collaborative team.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 39.6 323.1786 cm
+Q
+q
+1 0 0 1 39.6 300.7328 cm
+q
+BT 1 0 0 1 9 13.8128 Tm -9 0 Td 11.2229 TL /F1 8.633 Tf .101961 .101961 .101961 rg (\226) Tj (  Built the player ability set in Blueprints \227 EMP-based perception, Dash, and a Purge charge mechanic with cooldown states, resource) Tj T* 9 0 Td (metering and UMG feedback.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 39.6 299.5688 cm
+Q
+q
+1 0 0 1 39.6 288.3459 cm
+q
+BT 1 0 0 1 9 2.5899 Tm -9 0 Td 11.2229 TL /F1 8.633 Tf .101961 .101961 .101961 rg (\226) Tj (  Implemented enemy encounter and combat logic on reusable, modular Blueprint systems supporting a fast-paced survival loop.) Tj T* 9 0 Td ET
+Q
+Q
+q
+1 0 0 1 39.6 287.1819 cm
+Q
+q
+1 0 0 1 39.6 275.959 cm
+q
+BT 1 0 0 1 9 2.5899 Tm -9 0 Td 11.2229 TL /F1 8.633 Tf .101961 .101961 .101961 rg (\226) Tj (  Shipped a playable Windows prototype to itch.io \(gamersaurusrex.itch.io/frequency-zero\); planned for showcase at IGDC 2026, Chennai.) Tj T* 9 0 Td ET
+Q
+Q
+q
+1 0 0 1 39.6 274.795 cm
+Q
+q
+1 0 0 1 39.6 269.945 cm
+Q
+q
+1 0 0 1 39.6 258.887 cm
+q
+BT 1 0 0 1 0 1.843 Tm 11.058 TL /F2 9.215 Tf .101961 .101961 .101961 rg (Freelance 3D Artist & Motion Designer) Tj T* ET
+Q
+Q
+q
+1 0 0 1 39.6 257.723 cm
+Q
+q
+1 0 0 1 39.6 247.538 cm
+q
+BT 1 0 0 1 0 2.037 Tm 10.185 TL /F1 8.148 Tf .266667 .266667 .266667 rg (Self-employed  ) Tj (|) Tj (  May 2021 \226 Mar 2025) Tj T* ET
+Q
+Q
+q
+1 0 0 1 39.6 245.113 cm
+Q
+q
+1 0 0 1 39.6 222.6672 cm
+q
+BT 1 0 0 1 9 13.8128 Tm -9 0 Td 11.2229 TL /F1 8.633 Tf .101961 .101961 .101961 rg (\226) Tj (  3D models and animation for an animated film, character/environment/prop artwork for television commercials, and game-ready visuals) Tj T* 9 0 Td (for a mobile title; motion graphics and social campaign content in Adobe Creative Suite.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 39.6 221.5032 cm
+Q
+q
+1 0 0 1 39.6 213.7432 cm
+Q
+q
+1 0 0 1 39.6 195.3132 cm
+.121569 .305882 .47451 rg
+n 0 6.73 2.2 9.215 re f*
+BT /F2 9.7 Tf 11.64 TL ET
+.121569 .305882 .47451 rg
+BT 1 0 0 1 7.2 8.23 Tm (SKILLS) Tj T* ET
+.721569 .780392 .839216 RG
+.6 w
+n 0 3.23 m 532.8 3.23 l S
+Q
+q
+1 0 0 1 39.6 191.9182 cm
+Q
+q
+1 0 0 1 39.6 169.1271 cm
+q
+BT 1 0 0 1 0 14.15812 Tm 11.39556 TL /F2 8.633 Tf .101961 .101961 .101961 rg (Visualisation:) Tj /F1 8.633 Tf ( Unreal Engine 5, ArchViz, real-time lighting, texturing, level design, cinematics, Metahumans, VR/AR/XR walkthroughs,) Tj T* (performance optimisation) Tj T* ET
+Q
+Q
+q
+1 0 0 1 39.6 167.1871 cm
+Q
+q
+1 0 0 1 39.6 155.7915 cm
+q
+BT 1 0 0 1 0 2.76256 Tm 11.39556 TL /F2 8.633 Tf .101961 .101961 .101961 rg (Interactivity:) Tj /F1 8.633 Tf ( Blueprints, UMG / UI-UX, modular interaction systems, multiplayer walkthroughs, touchscreen and kiosk builds) Tj T* ET
+Q
+Q
+q
+1 0 0 1 39.6 153.8515 cm
+Q
+q
+1 0 0 1 39.6 142.4559 cm
+q
+BT 1 0 0 1 0 2.76256 Tm 11.39556 TL /F2 8.633 Tf .101961 .101961 .101961 rg (Programming:) Tj /F1 8.633 Tf ( C++ \(gameplay and simulation, alongside Blueprints\), Blueprint visual scripting, Android Studio) Tj T* ET
+Q
+Q
+q
+1 0 0 1 39.6 140.5159 cm
+Q
+q
+1 0 0 1 39.6 129.1204 cm
+q
+BT 1 0 0 1 0 2.76256 Tm 11.39556 TL /F2 8.633 Tf .101961 .101961 .101961 rg (Platforms & tools:) Tj /F1 8.633 Tf ( Windows PC, Android, Meta Quest 2, AR, cloud-streamed deployment; Git, Perforce, Adobe Creative Suite) Tj T* ET
+Q
+Q
+q
+1 0 0 1 39.6 127.1804 cm
+Q
+q
+1 0 0 1 39.6 120.3904 cm
+Q
+q
+1 0 0 1 39.6 101.9604 cm
+.121569 .305882 .47451 rg
+n 0 6.73 2.2 9.215 re f*
+BT /F2 9.7 Tf 11.64 TL ET
+.121569 .305882 .47451 rg
+BT 1 0 0 1 7.2 8.23 Tm (EDUCATION & CERTIFICATIONS) Tj T* ET
+.721569 .780392 .839216 RG
+.6 w
+n 0 3.23 m 532.8 3.23 l S
+Q
+q
+1 0 0 1 39.6 98.56537 cm
+Q
+q
+1 0 0 1 39.6 87.16981 cm
+q
+BT 1 0 0 1 0 2.76256 Tm 11.39556 TL /F2 8.633 Tf .101961 .101961 .101961 rg (Bachelor of Arts \(Hons\), VFX & Animation) Tj /F1 8.633 Tf ( \227 Annapurna College of Film and Media, Hyderabad  ) Tj (|) Tj (  2022 \226 2025) Tj T* ET
+Q
+Q
+q
+1 0 0 1 39.6 84.74481 cm
+Q
+q
+1 0 0 1 39.6 73.34925 cm
+q
+BT 1 0 0 1 0 2.76256 Tm 11.39556 TL /F2 8.633 Tf .101961 .101961 .101961 rg (Diploma, Arena Certified Professional in VFX Compositing & Editing) Tj /F1 8.633 Tf ( \227 Arena Animation, Vadodara  ) Tj (|) Tj (  2021 \226 2023) Tj T* ET
+Q
+Q
+q
+1 0 0 1 39.6 70.92425 cm
+Q
+q
+1 0 0 1 39.6 48.13313 cm
+q
+BT 1 0 0 1 0 14.15812 Tm 11.39556 TL /F2 8.633 Tf .101961 .101961 .101961 rg (Epic Games Game Design Professional Certificate) Tj /F1 8.633 Tf ( \227 Coursera, Feb 2025. Eight-course series in world-building, level design, Blueprint) Tj T* (scripting and UI/UX.) Tj T* ET
+Q
+Q
+ 
+
+endstream
 endobj
 6 0 obj
 <<
-/Author (Atharva Shewale) /CreationDate (D:20260824103243+00'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20260824103243+00'00') /Producer (ReportLab PDF Library - \(opensource\)) 
-  /Subject (Unreal Engine 5 Developer - Interactive & Architectural Visualisation) /Title (Atharva Shewale - Resume) /Trapped /False
+/F1 7 0 R
+/F2 8 0 R
 >>
 endobj
 7 0 obj
 <<
-/Count 1 /Kids [ 4 0 R ] /Type /Pages
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
 >>
 endobj
 8 0 obj
 <<
-/Filter [ /ASCII85Decode /FlateDecode ] /Length 3845
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
 >>
-stream
-Gb!#^?$G$]&q/*0^f-<C8i4A&[P-t!9&e;ZEW)#s]@dFVKI!]lJgEt"mb&\sG<kH2()8i(ibidsAJ6>F\X9pKB->K9r9*3T;D@h(K'g>6N'$B8b.))0m,AJD>Who^)=R$9@k1q1rJ^[TcX=iR%ekUC=g%-^Oi&_'oR+sLfeZ=BQZ(f(*>935Ku8.GH*2EcCrNhq?F4oqnbV21r;f!04o+d/c/^msp^b"3Segf'rbj>3[%,K$MqB"kI*7MeW*A55Fl7R6lepQU678L/PLZoQ`?$VQEWZ.H2a6OFgUf"P.<7<qB3?[Oc]7(GbZ,s)p<dkHG$Hr2(.j_G8G4&cW0;MXaJ<Nc4S(bcXiN:MRS8u.Ci^T>[[h*a2K%!Tq1*=B'h*T8pVq4)VVaK$,0TNS?.Q\e@K[Xu9JC'Z\G+nKK<ZM-c9g:GgiGe8hAFgbdEG%-,Q9DJ7$_&6.Q6_:Zgq:s=\48C=h3ES1"LDk.rmXn,M0]9*T,^unpITXCFSisftS#WNnA:=/h\ha9\AI[Rt'l,dWR1CQk'697'79qDK*3$QZsXW65SQ@n.FHqC<<@15;U,BQU9`Qg^4hUnu.@ppX5qKZrqb=QR=-cB>:Pd@tjk$@:Zu)k(rMj#OLg-1G&LU/Bam1$g,(Rp[4*4SIaB[LU"=>i-L^Xi!#V,KE)D8GSr#\&38%YSH@E]YJk?"#CPQQ-s4o/Yin\+)$NB.c<++&\o6A7Ku>(6#eF0"QnH0&Uu#a6NnF68rIZm1^U\7E[;'>qbs[sTSJ?"UG(1u_bZ)c-!UZILC8EdL4WL^r[E2Z$n>pZK:1PU%0<N``R4-0WS)Wrf=*K?L)[i@r:W5`bT="Jg*;5EMSq1)iQAb'S5J.3L*p^Z+%:E2<rW?b?'(9S"q%0!/Q-0n9UXc)Q7;Z=?+o*.jC9p#KjMVsUV7=A6^&=rX<"FKR_:\<&De2oN=j<f\H#)h1844qc44_n*.l!I2%TS)=7U0@2lB\TX/(MiuB.>c;;qB1SE^`u/!KU.XLp3Jq)r(iajWC-VZS9$L-Snk.9<HHPQ+*3Z==qSKG'WY9kr[_BJjr1]-YVsg@psdH\-%h?(jE-p3G=26)g$^^F)_0Umd+REq/AAT4.a)JS:%(S[p@18[Xd>W%alpN$?EYXkOoJtK=^ha@'Lrj?P4`E16LpDZB5K$M1RkK]7n:TH8#5a,8#W6Q60OP6p<sUcZV[^I,!Z.>.3HtZn'n%bBu@:"[tD&qI.Z0W+tH;)j)uY4,"Uupi[Jd,2W987ed!<jkb_(1#oDOEQ@S836&@aP]jraSG9GSQ57&6rRW3nT".(@Zb"E5M5j7rB7O%rIi;''0i`e+(5u#I5Kuf_04=1,hcll3*JjU,AKq21&P'nF2@lA`nJ<>0k$In)Nr[R%<i_B7l+$IRg0rU$dasr9R6cI'=pE,$<!jPIf;N^UO`XYV>A[K2\C8*1.MA^N%q4h@Q=dVg.`\HcB<ksp=s.>)U&iZ.fK4N;W6.e>W2g>)/BJ'9,ii*S.r)V1'3o3t2]PlX^(XUtZu(p%,X+,1kf\58'j:9]NoZ=;fX]./niXV'+I#'-i,;c)m=B!<Tf%<+)1=ht^MNL*a)>or48WiSZFL_H>AWoJ(hkSY/=X@V`&pN/:i\9fZ)MA*]gD$igo-K5\/>=A&kl:2'O`9jN1$E/hs$(P07<Y*b[b;82QY29HAC+!+ml<p>bcT&V=:IO^@QE-a72,dAQ,Wla'X.a<P?eSD,dJA"oX]QGABU^\.I8_.]ZPn;^tTe/8)8Q`!U`MOeo!B:*V+6)p7\bO'P7Al!9/DSifDZ[>t\qBNPcQR):_dA>qI)<gmVI(3ea(UHih.poER]/pB6Ii>Ai`7reH,JOV4HY1gHb=qYXcMc?WdI7*-*CMEs:?r_Q=_tI62Lh`>NU#f(/1,Lnb:^j?_;0abPF<\%4J@Yn"O"/n/\>]"t2\L$J"=#uVjM*J7;Nr6P9nrN/]63]#1Hglkj7A:dcf%kQHjeIoWLFeCmcJ!i6Ji9j/`qSbTmMRL+b-&D?f.[cKe&:'A*%peI;lCAEUQ4GmP';]LBh#lEF[`iQ0pi4>VT7NreLB)oOqOLi%J'#^nQba"B8Pi]d95>1%C9eR?U+C%Q/#r<PMRVp15;iS)c.ur^5NBgG`9#M`Z1-g/8Jg>!IT`gaKHP5BM[#%B5EI%12L,:D0j>/$X#"r(<O)TR)r884]h^A3t7;mGN(!YY8ht)(B7aI/Q#gJGqk]C(Dh'2ad]4C`<e!b7C+;I(l*]8;PZr6COhj1hU5&iJeQ9JdtUDrnbdQ\RYZ([G%n/51E.DD6^sQ<OkItHjL6%,+4<=Kqq7MSUh*5NkUJb5"CUC?@^aZRn4*#.+nB1#_@/Q;H1,6<PMtc%$!ZVf$,%rY,QGW$Djf6XHD)rWig>sSgsuq(bJo]M5gSV(Xe"2k+VumN,Z>;&ma[5aYKo?pjs$BeP=_t'9jQip7[UX=*)H*>`4BbY\nDsgBq6L$$C,q3aY#i!]=$0gk":[?sI>:',-Rne+&]rZ41IpZK`q&,GF:q?;R0#.,u-uV2keiS^pFJl9&k`1Sej>>H8OgCf%8;q?p&m6?4PeH6na?*Pb!C:b-cmpGsF+fCS#MiS*<\DZNBp\3bCj85r5ge`EgVeT*ML33$5Lc(e(!f=J(6<Hh]mVLgp:OS73VF<4#d>cI".N9iqUk_@-q5_Zoe57pZRW!"U!#pTC*NItTSAEm2oQoD%UX!Es+=d.(39S&mo#&5aD]%+4d_s.L#V[KdOrs?"1q"uM.YUhO%Zm1+U"E$kIpA!1c+`UpE@Y[eZj^V;m'7*[rqnnL!Yn_Ui`dA&BBX?^p>5_1iBVfQAP\FGERG9F\*RWl%<p0r"'?:JXfaOEKI_2cF$+SfbZQPI,:;gXAX5j!kk?DbA*%U7M[bmZJYmgtER<Of,UfVYt7$F=erW9W?Q5:d`O%:q0hHt'9mDJ$9-L0_oe^rs"#5-W..>is:i:qCLV)t]R5SulLVK_uIP^Z/u?#o;cAus+C*/.\GGmG$r2.%'A>1'].&Oe#(2cTf8=:Xm$6)q(542bo.E]\3GAlm1#EOb,bmVo'A1<9g9/V?1ZWFZ!X3#=UTq=r4(o5A[i_IIK&4PGAfR"RQ[?j5n"glLY,&;DppQs+&aB0==Bn"'%L\@]6<O&fn^S)':91UYV_RUT9RF_@'4[Lf8VD(4^MkB=.cb8,i_esl3%p,=$h0&':6Eb]d:g`IfI0Q7<6^PM%;q\7CMK4qF^!_LAtZchD!jbHir?W3AN/<@X+H;i^>c;WMe#(9j8mD-dJiV@j\6#dF#^H[hL^Ds#tPuJhnLq9Hh8iOolr[Bj@/m%.nNd00Kr:kZHVN!Y!@fRgU3i?64W94Viq&NHSpJ>1:IolnpLEb+eY1gT$()TT6Y*$"/LgiLQc9_fa\P-ql]rqJs\9p4"R`]-r+@6IHrj@9KfW2(kYu;<9$)HYoRI:-sU"J'sS-'b`^2;4$aT^MYhot2GUW^Q-MrT#"JbJ'`m,Ig%EVK2diqGE!&`UF]+>+qPK/ace$%A:D]b&:jk/d@58r=/pgYQ^GRXf\`ncPG+01<pD[rl%dJK1iHg9a-:>bZhf>VDdQ9PC$=1_V+BCd2ec39W5t;fB:5>6HhNH-n<_LFu3,f_H;iI0=FfKqQq->.kR&H(#mq^fAjdV$B><oHDEg<Db392;P_F-E6fX4*kMY--CaDUah)F)ZkmMJT>s_:X"\:cPbk_&%^M<#9'pU5qYh\e>C_Be#YdAV!NOPV]NQ?oLq"Cb9:VJ%?DC3Qh&:DL;bJb,0#HWTnA420*12H^3MbGI#$pZXB<pM;DB_J^ZuRRmpCNgW(u$PrrKBIi<]~>endstream
+endobj
+9 0 obj
+<<
+>>
+endobj
+10 0 obj
+<<
+/Type /Annot
+/Subtype /Link
+/Rect [ 428.745 711.75785 564.42 722.25785 ]
+/Border [ 0 0 0 ]
+/A <<
+/S /URI
+/Type /Action
+/URI (https\072\057\057www\056youtube\056com\057playlist\077list\075PLP6aXjlbiNLc)
+>>
+/P 4 0 R
+>>
 endobj
 xref
-0 9
+0 11
 0000000000 65535 f 
-0000000061 00000 n 
-0000000102 00000 n 
-0000000209 00000 n 
-0000000321 00000 n 
-0000000514 00000 n 
-0000000582 00000 n 
-0000000929 00000 n 
-0000000988 00000 n 
+0000000015 00000 n 
+0000000054 00000 n 
+0000000113 00000 n 
+0000000178 00000 n 
+0000000386 00000 n 
+0000011285 00000 n 
+0000011326 00000 n 
+0000011433 00000 n 
+0000011545 00000 n 
+0000011566 00000 n 
 trailer
 <<
-/ID 
-[<26d8fef5901e82c099def5d0f50c58fa><26d8fef5901e82c099def5d0f50c58fa>]
-% ReportLab generated PDF document -- digest (opensource)
-
-/Info 6 0 R
-/Root 5 0 R
-/Size 9
+/Size 11
+/Root 3 0 R
+/Info 1 0 R
 >>
 startxref
-4924
+11802
 %%EOF
