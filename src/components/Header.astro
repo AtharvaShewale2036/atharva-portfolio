@@ -1,0 +1,37 @@
+---
+const nav = [
+  ['Projects', '/#projects'],
+  ['About', '/#about'],
+  ['Experience', '/#experience'],
+  ['Contact', '/#contact'],
+];
+---
+<header class="site-header container">
+  <a class="brand label" href="/"><span class="brand-mark" aria-hidden="true"></span>Atharva Shewale</a>
+  <nav aria-label="Main">
+    <ul>{nav.map(([label, href]) => <li><a class="label" href={href}>{label}</a></li>)}</ul>
+  </nav>
+  <div class="actions">
+    <a class="btn btn-ghost" href="/resume.pdf" download>Résumé (PDF)</a>
+    <button class="btn btn-paper" type="button" data-mode-toggle>
+      <span class="when-full">Quick start</span><span class="when-quick">▶ Full mode</span>
+    </button>
+    <button class="btn btn-ghost btn-icon" type="button" data-sound-toggle aria-pressed="false" aria-label="Sound effects">SND</button>
+  </div>
+</header>
+
+<style>
+  .site-header { display: flex; align-items: center; gap: var(--spacing-lg); padding-block: var(--spacing-lg); border-bottom: 1px solid var(--color-border); flex-wrap: wrap; }
+  .brand { display: flex; align-items: center; gap: var(--spacing-sm); text-decoration: none; font-weight: 700; color: var(--color-on-surface); }
+  .brand-mark { width: 10px; height: 10px; background: var(--color-primary); }
+  nav { margin-left: auto; }
+  nav ul { display: flex; gap: var(--spacing-lg); list-style: none; margin: 0; padding: 0; }
+  nav a { color: var(--color-on-surface-muted); text-decoration: none; }
+  nav a:hover { color: var(--color-on-surface); box-shadow: 0 2px 0 var(--color-primary); }
+  .actions { display: flex; gap: var(--spacing-sm); }
+  .when-quick { display: none; }
+  :global(html[data-mode="quick"]) .when-full { display: none; }
+  :global(html[data-mode="quick"]) .when-quick { display: inline; }
+  @media (max-width: 1023px) { nav { display: none; } .actions { margin-left: auto; } }
+  @media (max-width: 767px) { .actions .btn-ghost:first-child { display: none; } }
+</style>
