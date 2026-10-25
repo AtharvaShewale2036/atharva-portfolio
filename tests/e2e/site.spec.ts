@@ -26,3 +26,22 @@ test('unknown route shows the 404 page', async ({ page }) => {
   expect(res?.status()).toBe(404);
   await expect(page.getByRole('heading', { name: /cartridge not found/i })).toBeVisible();
 });
+
+test('every internal link resolves', async ({ page, request }) => {
+  const seen = new Set<string>();
+  const queue = ['/'];
+  while (queue.length) {
+    const path = queue.shift()!;
+    if (seen.has(path)) continue;
+    seen.add(path);
+    await page.goto(path);
+    const hrefs = await page.$$eval('a[href^="/"]', (as) => as.map((a) => (a as HTMLAnchorElement).getAttribute('href')!));
+    for (const h of hrefs) {
+      const clean = h.split('#')[0] || '/';
+      if (!seen.has(clean) && !clean.endsWith('.pdf')) queue.push(clean);
+    }
+  }
+  for (const path of seen) expect((await request.get(path)).status(), path).toBe(200);
+  expect((await request.get('/resume.pdf')).status()).toBe(200);
+  expect(seen.size).toBeGreaterThanOrEqual(7);
+});
