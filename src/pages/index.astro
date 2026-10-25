@@ -1,4 +1,22 @@
 ---
+import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import QuickStart from '../components/QuickStart.astro';
+import Profile from '../components/Profile.astro';
+import { profile } from '../data/profile';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: profile.name,
+  jobTitle: 'Unreal Engine 5 Developer',
+  email: `mailto:${profile.contact.email}`,
+  address: { '@type': 'PostalAddress', addressRegion: 'Goa', addressCountry: 'IN' },
+  sameAs: [profile.contact.linkedin, profile.contact.youtube, profile.contact.itch],
+};
 ---
-<Base title="Atharva Shewale · UE5 Developer" description="UE5 developer portfolio."><h1 class="h-display container">Atharva Shewale</h1></Base>
+<Base title="Atharva Shewale · UE5 Developer" description={profile.intro} jsonLd={jsonLd}>
+  <QuickStart projects={projects} />
+  <Profile />
+</Base>

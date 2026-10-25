@@ -1,0 +1,58 @@
+---
+import { profile } from '../data/profile';
+const c = profile.contact;
+---
+<section id="about" class="container block" aria-labelledby="about-h">
+  <h2 id="about-h" class="h-lg">About</h2>
+  <div class="about">
+    <div class="bio">{profile.bio.map((p) => <p>{p}</p>)}</div>
+    <dl class="skills">
+      {profile.skills.map((s) => (<Fragment><dt class="label">{s.group}</dt><dd class="body-sm">{s.items.join(' · ')}</dd></Fragment>))}
+    </dl>
+  </div>
+</section>
+
+<section id="experience" class="container block" aria-labelledby="exp-h">
+  <h2 id="exp-h" class="h-lg">Experience</h2>
+  <ol class="timeline">
+    {profile.experience.map((e) => (
+      <li>
+        <p class="label muted">{e.dates}</p>
+        <h3 class="title">{e.role} · {e.org}</h3>
+        <p class="body-sm muted">{e.place}</p>
+        <ul>{e.points.map((pt) => <li class="body-sm">{pt}</li>)}</ul>
+      </li>
+    ))}
+  </ol>
+  <h3 class="title edu-h">Education & certification</h3>
+  <ul class="edu">{profile.education.map((e) => <li class="body-sm">{e}</li>)}</ul>
+</section>
+
+<section id="contact" class="container block" aria-labelledby="contact-h">
+  <h2 id="contact-h" class="h-lg">Contact</h2>
+  <ul class="contact">
+    <li><a class="btn btn-primary" href={`mailto:${c.email}`}>Email</a><span class="body-sm muted">{c.email}</span></li>
+    <li><a class="btn btn-ghost" href={c.whatsapp} rel="noopener">WhatsApp ↗</a><a class="body-sm muted" href={`tel:${c.tel}`}>{c.phone}</a></li>
+    <li><a class="btn btn-ghost" href={c.linkedin} rel="noopener">LinkedIn ↗</a></li>
+    <li><a class="btn btn-ghost" href={c.youtube} rel="noopener">YouTube ↗</a></li>
+    <li><a class="btn btn-ghost" href={c.itch} rel="noopener">itch.io ↗</a></li>
+  </ul>
+</section>
+
+<style>
+  .block { padding-block: var(--spacing-2xl); border-top: 1px solid var(--color-border); }
+  .block > h2 { margin-bottom: var(--spacing-xl); }
+  .about { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: var(--spacing-xl); }
+  .bio p { max-width: 68ch; margin-top: 0; }
+  .skills { margin: 0; display: grid; gap: var(--spacing-sm); }
+  .skills dt { color: var(--color-primary-bright); margin-top: var(--spacing-md); }
+  .skills dd { margin: 0; }
+  .timeline { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--spacing-xl); }
+  .timeline > li { border-left: 2px solid var(--color-border); padding-left: var(--spacing-lg); }
+  .timeline h3 { margin-block: var(--spacing-sm); }
+  .timeline ul, .edu { padding-left: var(--spacing-md); max-width: 72ch; }
+  .edu-h { margin-top: var(--spacing-xl); }
+  .contact { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: var(--spacing-md); }
+  .contact li { display: flex; align-items: center; gap: var(--spacing-md); }
+  @media (max-width: 1023px) { .about { grid-template-columns: 1fr; } }
+</style>

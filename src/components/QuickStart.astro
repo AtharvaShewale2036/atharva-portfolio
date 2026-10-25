@@ -1,0 +1,66 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { profile } from '../data/profile';
+import { spineVar } from '../lib/spine';
+
+interface Props { projects: CollectionEntry<'projects'>[] }
+const { projects } = Astro.props;
+---
+<section class="quick container" data-show="quick" aria-labelledby="qs-name">
+  <div class="intro">
+    <div>
+      <h1 id="qs-name" class="h-display">{profile.name}</h1>
+      <p class="label role">{profile.role}</p>
+      <p class="prompt">{profile.intro}</p>
+      <p class="avail"><span class="dot" aria-hidden="true"></span>{profile.availability}</p>
+    </div>
+    <div class="ctas">
+      <a class="btn btn-primary" href="/resume.pdf" download>Résumé (PDF)</a>
+      <a class="btn btn-ghost" href={profile.contact.linkedin} rel="noopener">LinkedIn ↗</a>
+      <a class="btn btn-ghost" href={`mailto:${profile.contact.email}`}>Email</a>
+    </div>
+  </div>
+
+  <div class="panel list" id="projects">
+    <div class="list-head label"><span>Cartridges · best first</span><span class="body-sm list-note">Quick start mode</span></div>
+    <ol>
+      {projects.map((p) => (
+        <li style={`--spine:${spineVar(p.data.spine)}`}>
+          <a href={`/work/${p.id}`}>
+            <span class="bar" aria-hidden="true"></span>
+            <span class="label idx">{String(p.data.order).padStart(2, '0')}</span>
+            <span class="title name">{p.data.title}</span>
+            <span class="meta body-sm">{p.data.role} · {p.data.status}<br /><span class="prompt">{p.data.oneLine}</span></span>
+            <span class="view label">View →</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .quick { padding-block: var(--spacing-2xl); display: grid; gap: var(--spacing-xl); }
+  .intro { display: flex; justify-content: space-between; align-items: end; gap: var(--spacing-xl); flex-wrap: wrap; }
+  .role { color: var(--color-primary-bright); margin-block: var(--spacing-md); }
+  .intro p { max-width: 68ch; }
+  .avail { display: flex; gap: var(--spacing-sm); align-items: center; }
+  .dot { width: 8px; height: 8px; background: var(--color-primary); }
+  .ctas { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
+  .list-head { display: flex; justify-content: space-between; padding: var(--spacing-md) var(--spacing-lg); border-bottom: 1px solid color-mix(in srgb, var(--color-ink) 15%, transparent); }
+  .list-note { color: var(--color-ink-muted); text-transform: none; letter-spacing: 0; font-family: var(--font-body); }
+  ol { list-style: none; margin: 0; padding: 0; }
+  li + li { border-top: 1px solid color-mix(in srgb, var(--color-ink) 15%, transparent); }
+  li a { display: grid; grid-template-columns: 8px 48px minmax(0, 1fr) minmax(0, 2fr) auto; gap: var(--spacing-lg); align-items: center; padding: var(--spacing-md) var(--spacing-lg); text-decoration: none; color: var(--color-ink); }
+  .bar { width: 8px; height: 44px; background: var(--spine); }
+  .idx { color: var(--color-ink-muted); }
+  .meta { color: var(--color-ink-muted); }
+  .meta .prompt { color: var(--color-ink); }
+  .view { color: var(--spine); }
+  li a:hover .name { text-decoration: underline; text-decoration-color: var(--spine); }
+  @media (max-width: 767px) {
+    li a { grid-template-columns: 8px minmax(0, 1fr); gap: var(--spacing-sm) var(--spacing-md); }
+    .bar { grid-row: span 3; height: 100%; }
+    .idx, .view { display: none; }
+  }
+</style>

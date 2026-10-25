@@ -35,3 +35,14 @@ const nav = [
   @media (max-width: 1023px) { nav { display: none; } .actions { margin-left: auto; } }
   @media (max-width: 767px) { .actions .btn-ghost:first-child { display: none; } }
 </style>
+
+<script>
+  const root = document.documentElement;
+  document.querySelectorAll('[data-mode-toggle]').forEach((btn) =>
+    btn.addEventListener('click', () => {
+      const next = root.dataset.mode === 'quick' ? 'full' : 'quick';
+      root.dataset.mode = next;
+      try { localStorage.setItem('mode', next); } catch {}
+    }),
+  );
+</script>
