@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import BackOfBox from '../../components/BackOfBox.astro';
+import Manual from '../../components/Manual.astro';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -32,20 +33,22 @@ const ogImage = d.cover?.src ?? (d.videos[0] ? `https://i.ytimg.com/vi/${d.video
       </div>
     )}
 
-    <section id="panel-box" role="tabpanel" aria-labelledby="tab-box">
+    <section id="panel-box" role={hasManual ? 'tabpanel' : undefined} aria-labelledby={hasManual ? 'tab-box' : undefined}>
       <BackOfBox project={project}><Content /></BackOfBox>
     </section>
     {hasManual && (
       <section id="panel-manual" role="tabpanel" aria-labelledby="tab-manual">
-        <p class="body-sm muted">Manual</p>
+        <Manual project={project} />
       </section>
     )}
   </div>
 </Base>
 
 <script>
-  import { initTabs } from '../../scripts/project';
+  import { initTabs, initTeardown } from '../../scripts/project';
   initTabs();
+  const board = document.querySelector<HTMLElement>('[data-board]');
+  if (board) initTeardown(board);
 </script>
 
 <style>

@@ -1,3 +1,5 @@
+import { playBlip } from './sound';
+
 export function initTabs(): void {
   const tablist = document.querySelector<HTMLElement>('[data-tabs]');
   if (!tablist) return;
@@ -25,6 +27,35 @@ export function initTabs(): void {
   select(tabs[0]);
 }
 
-export function initTeardown(_root: HTMLElement): void {
-  // Implemented in Task 8.
+export function initTeardown(root: HTMLElement): void {
+  const chips = [...root.querySelectorAll<HTMLButtonElement>('[data-chip]')];
+  const panels = [...root.querySelectorAll<HTMLElement>('[data-chip-panel]')];
+  let active = 0;
+  root.setAttribute('data-js', '');
+
+  const select = (i: number, focus = false, silent = false) => {
+    active = i;
+    chips.forEach((c, j) => {
+      c.setAttribute('aria-pressed', String(j === i));
+      c.tabIndex = j === i ? 0 : -1;
+    });
+    panels.forEach((p, j) => p.toggleAttribute('data-active', j === i));
+    if (focus) chips[i].focus();
+    if (!silent) playBlip('select');
+  };
+
+  chips.forEach((c, i) => {
+    c.addEventListener('click', () => select(i));
+    c.addEventListener('keydown', (e) => {
+      const d = e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 1 : e.key === 'ArrowLeft' || e.key === 'ArrowUp' ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      select((i + d + chips.length) % chips.length, true);
+    });
+  });
+  root.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') chips[active].focus();
+  });
+  root.querySelectorAll('[data-teardown-close]').forEach((b) => b.addEventListener('click', () => chips[active].focus()));
+  select(0, false, true);
 }

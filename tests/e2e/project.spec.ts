@@ -65,3 +65,43 @@ test.describe('reduced motion', () => {
     expect(t).toBe('none');
   });
 });
+
+test('selecting a chip shows its teardown; Esc returns to the board', async ({ page }) => {
+  await page.goto('/work/frequency-zero');
+  await page.getByRole('tab', { name: 'Manual' }).click();
+  await page.locator('[data-chip="senses"]').click();
+  await expect(page.locator('[data-chip="senses"]')).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('[data-chip-panel="senses"]')).toBeVisible();
+  await expect(page.locator('[data-chip-panel="ping-pool"]')).toBeHidden();
+  await page.keyboard.press('Escape');
+  await expect(page.locator('[data-chip="senses"]')).toBeFocused();
+});
+
+test('arrow keys move between chips', async ({ page }) => {
+  await page.goto('/work/evacolregs');
+  await page.getByRole('tab', { name: 'Manual' }).click();
+  await page.locator('[data-chip="multiplayer"]').focus();
+  await page.keyboard.press('ArrowRight');
+  await expect(page.locator('[data-chip="bam"]')).toBeFocused();
+  await expect(page.locator('[data-chip-panel="bam"]')).toBeVisible();
+});
+
+test('credits list my work first', async ({ page }) => {
+  await page.goto('/work/frequency-zero');
+  await page.getByRole('tab', { name: 'Manual' }).click();
+  await expect(page.locator('#credits li').first()).toContainText('Ping system integration');
+});
+
+test.describe('no JavaScript', () => {
+  test.use({ javaScriptEnabled: false });
+  test('every chip panel and the manual are readable', async ({ page }) => {
+    await page.goto('/work/evacolregs');
+    await expect(page.locator('#panel-manual')).toBeVisible();
+    await expect(page.locator('[data-chip-panel]:visible')).toHaveCount(6);
+  });
+  test('home falls back to Quick Start', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.locator('#projects li')).toHaveCount(6);
+    await expect(page.locator('[data-crate]')).toBeHidden();
+  });
+});

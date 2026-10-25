@@ -1,0 +1,73 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+type Chip = CollectionEntry<'projects'>['data']['chips'][number];
+
+interface Props { chips: Chip[] }
+const { chips } = Astro.props;
+const num = (i: number) => String(i + 1).padStart(2, '0');
+---
+<div class="teardown" data-board>
+  <div class="board-wrap">
+    <div class="board">
+      <ul class="chips">
+        {chips.map((c, i) => (
+          <li><button class="chip label" type="button" data-chip={c.id} aria-pressed={i === 0 ? 'true' : 'false'} aria-controls={`chip-${c.id}`}>{c.title}</button></li>
+        ))}
+      </ul>
+      <div class="contacts" aria-hidden="true"></div>
+    </div>
+    <p class="body-sm muted prompt">Every chip is a system I built. Select one to see how it works.</p>
+  </div>
+
+  <div class="panels">
+    {chips.map((c, i) => (
+      <article class="panel chip-panel" id={`chip-${c.id}`} data-chip-panel={c.id}>
+        <header class="panel-header label"><span>Teardown · chip {num(i)}</span><button class="label close" type="button" data-teardown-close>Esc close</button></header>
+        <div class="chip-body">
+          <h3 class="h-md">{c.title}</h3>
+          {c.still && <Image src={c.still} alt={`${c.title} in the editor`} widths={[480, 960]} sizes="(max-width: 1023px) 100vw, 640px" />}
+          <dl>
+            <dt>Problem</dt><dd>{c.problem}</dd>
+            <dt>Approach</dt><dd>{c.approach}</dd>
+            <dt>Result</dt><dd>{c.result}</dd>
+          </dl>
+        </div>
+      </article>
+    ))}
+  </div>
+</div>
+
+<div class="panel spec">
+  <h3 class="label spec-h">Spec sheet</h3>
+  <table>
+    <tbody>
+      {chips.map((c, i) => (<tr><th scope="row">{num(i)} · {c.title}</th><td>{c.summary}</td></tr>))}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .teardown { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--spacing-xl); align-items: start; }
+  .board { background: var(--color-board); border-radius: var(--rounded-md); padding: var(--spacing-xl); background-image: radial-gradient(color-mix(in srgb, var(--color-contact) 25%, transparent) 1px, transparent 1px); background-size: 16px 16px; }
+  .chips { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--spacing-lg); }
+  .chip { width: 100%; min-height: 88px; background: var(--color-ink); color: var(--color-paper); border: 2px solid transparent; border-radius: var(--rounded-none); padding: var(--spacing-md); cursor: pointer;
+    box-shadow: 0 -6px 0 -2px var(--color-contact), 0 6px 0 -2px var(--color-contact); }
+  .chip[aria-pressed="true"] { background: var(--color-surface-raised); border-color: var(--color-primary); border-radius: var(--rounded-sm); }
+  .contacts { height: 24px; margin-top: var(--spacing-xl); background: repeating-linear-gradient(to right, var(--color-contact) 0 8px, transparent 8px 14px); }
+  .chip-body { padding: var(--spacing-lg); display: grid; gap: var(--spacing-md); }
+  .close { background: none; border: 0; color: inherit; cursor: pointer; }
+  dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: var(--spacing-sm) var(--spacing-md); }
+  dt::before { content: '> '; }
+  dt { font-weight: 600; }
+  dd { margin: 0; }
+  .spec { margin-top: var(--spacing-xl); padding: var(--spacing-lg); }
+  .spec-h { color: var(--color-ink-muted); margin-bottom: var(--spacing-md); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: var(--spacing-sm) 0; border-top: 1px solid color-mix(in srgb, var(--color-ink) 15%, transparent); vertical-align: top; }
+  th { font-weight: 400; padding-right: var(--spacing-lg); width: 40%; }
+  /* JS on: show only the selected panel. JS off: all panels stack, readable. */
+  :global(html[data-mode]) .teardown[data-js] .chip-panel:not([data-active]) { display: none; }
+  .teardown:not([data-js]) .close { display: none; }
+  @media (max-width: 1023px) { .teardown { grid-template-columns: 1fr; } dl { grid-template-columns: 1fr; } }
+</style>
