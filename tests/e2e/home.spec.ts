@@ -85,11 +85,27 @@ test.describe('crate', () => {
     await expect(page.locator('[data-crate-live]')).toContainText('06 of 06');
   });
 
-  test('a burst of wheel events flips once', async ({ page }) => {
+  test('hovering a cartridge pulls it up and shows its card', async ({ page }) => {
     await page.goto('/');
-    await page.locator('[data-crate]').hover();
-    for (let i = 0; i < 8; i++) await page.mouse.wheel(0, 40);
-    await expect(page.locator('[data-crate-live]')).toContainText('02 of 06');
+    // The visible strip of a rear cartridge is its side face; move the mouse there like a user would.
+    const box = (await page.locator('[data-cart]').nth(2).locator('.side').boundingBox())!;
+    await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+    await expect(page.locator('[data-crate-live]')).toContainText('03 of 06, Saridena ArchViz');
+    await expect(page.locator('[data-cart]').nth(2)).toHaveAttribute('data-active', '');
+    await expect(page.locator('[data-crate-card]:not([hidden])')).toContainText('Saridena ArchViz');
+  });
+
+  test('scrolling over the crate scrolls the page', async ({ page }) => {
+    await page.goto('/');
+    await page.locator('[data-crate]').hover({ position: { x: 20, y: 20 } });
+    await page.mouse.wheel(0, 400);
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(0);
+  });
+
+  test('clicking a cartridge opens its project', async ({ page }) => {
+    await page.goto('/');
+    await page.locator('[data-cart]').first().locator('.cart-title').click();
+    await expect(page).toHaveURL(/\/work\/evacolregs/);
   });
 
   test('pull out opens the project page', async ({ page }) => {

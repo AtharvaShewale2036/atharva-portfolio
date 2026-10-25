@@ -38,15 +38,6 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
   </div>
 </div>
 
-<div class="panel spec">
-  <h3 class="label spec-h">Spec sheet</h3>
-  <table>
-    <tbody>
-      {chips.map((c, i) => (<tr><th scope="row">{num(i)} · {c.title}</th><td>{c.summary}</td></tr>))}
-    </tbody>
-  </table>
-</div>
-
 <style>
   .teardown { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--spacing-xl); align-items: start; }
   .board { background: var(--color-board); border-radius: var(--rounded-md); padding: var(--spacing-xl); background-image: radial-gradient(color-mix(in srgb, var(--color-contact) 25%, transparent) 1px, transparent 1px); background-size: 16px 16px; }
@@ -62,11 +53,6 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
   dt::before { content: '> '; }
   dt { font-weight: 600; }
   dd { margin: 0; }
-  .spec { margin-top: var(--spacing-xl); padding: var(--spacing-lg); }
-  .spec-h { color: var(--color-ink-muted); margin-bottom: var(--spacing-md); }
-  table { width: 100%; border-collapse: collapse; font-size: 14px; }
-  th, td { text-align: left; padding: var(--spacing-sm) 0; border-top: 1px solid color-mix(in srgb, var(--color-ink) 15%, transparent); vertical-align: top; }
-  th { font-weight: 400; padding-right: var(--spacing-lg); width: 40%; }
   /* JS on: show only the selected panel. JS off: all panels stack, readable. */
   :global(html[data-mode]) .teardown[data-js] .chip-panel:not([data-active]) { display: none; }
   .teardown:not([data-js]) .close { display: none; }

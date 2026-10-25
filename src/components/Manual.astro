@@ -10,29 +10,21 @@ const d = Astro.props.project.data;
     <p class="label chapter-no">Chapter 01</p>
     <h2 id="ch1" class="h-md">Systems I built</h2>
     <ChipBoard chips={d.chips} />
-  </section>
-
-  {d.troubleshooting.length > 0 && (
-    <section class="panel chapter page" aria-labelledby="ch2">
-      <p class="label chapter-no">Chapter 02</p>
-      <h2 id="ch2" class="h-md">Troubleshooting</h2>
-      <ol class="stories">
-        {d.troubleshooting.map((t) => (
-          <li><dl><dt>Challenge</dt><dd>{t.challenge}</dd><dt>Tried</dt><dd>{t.tried}</dd><dt>Fix</dt><dd>{t.fix}</dd></dl></li>
-        ))}
-      </ol>
-    </section>
-  )}
-
-  <section class="panel chapter page" id="credits" aria-labelledby="ch3">
-    <p class="label chapter-no">Chapter 03</p>
-    <h2 id="ch3" class="h-md">Credits</h2>
-    <h3 class="title">Atharva Shewale · {d.role}</h3>
-    <ul>{d.credits.mine.map((m) => <li>{m}</li>)}</ul>
-    {d.credits.team.length > 0 && (
-      <ul class="team body-sm">{d.credits.team.map((t) => <li><strong>{t.name}</strong> · {t.role}</li>)}</ul>
+    {d.credits.mine.length > 0 && (
+      <div class="panel page mine">
+        <h3 class="title">Atharva Shewale · {d.role}</h3>
+        <ul id="my-work">{d.credits.mine.map((m) => <li>{m}</li>)}</ul>
+      </div>
     )}
   </section>
+
+  {d.credits.team.length > 0 && (
+    <section class="panel chapter page" id="credits" aria-labelledby="ch2">
+      <p class="label chapter-no">Chapter 02</p>
+      <h2 id="ch2" class="h-md">Credits</h2>
+      <ul class="team body-sm">{d.credits.team.map((t) => <li><strong>{t.name}</strong> · {t.role}</li>)}</ul>
+    </section>
+  )}
 </div>
 
 <style>
@@ -41,11 +33,7 @@ const d = Astro.props.project.data;
   .page .chapter-no { color: var(--color-primary); }
   .chapter > h2 { margin-block: var(--spacing-sm) var(--spacing-lg); }
   .page { padding: var(--spacing-xl); }
-  .stories { padding-left: var(--spacing-lg); display: grid; gap: var(--spacing-lg); margin: 0; }
-  dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: var(--spacing-xs) var(--spacing-md); }
-  dt { font-weight: 600; }
-  dt::before { content: '> '; }
-  dd { margin: 0; max-width: 72ch; }
+  .mine { margin-top: var(--spacing-xl); }
+  .mine ul { margin: var(--spacing-md) 0 0; padding-left: var(--spacing-lg); display: grid; gap: var(--spacing-sm); max-width: 80ch; }
   .team { list-style: none; padding: 0; color: var(--color-ink-muted); display: grid; gap: var(--spacing-xs); }
-  @media (max-width: 767px) { dl { grid-template-columns: 1fr; } }
 </style>

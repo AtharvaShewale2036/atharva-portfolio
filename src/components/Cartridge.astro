@@ -10,8 +10,8 @@ const { title, spine, cover, youtubeId, caption, size = 'crate' } = Astro.props;
   <div class="grooves" aria-hidden="true"></div>
   <div class="label-card">
     <p class="cart-title">{title}</p>
-    <div class="window">
-      {cover ? <Image src={cover} alt="" widths={[240, 480]} sizes={size === 'box' ? '360px' : '240px'} /> :
+    <div class={cover ? 'window poster' : 'window'}>
+      {cover ? <Image src={cover} alt="" widths={[240, 480, 720]} sizes={size === 'box' ? '360px' : '240px'} loading={size === 'crate' ? 'eager' : 'lazy'} /> :
        youtubeId ? <img src={`https://i.ytimg.com/vi/${youtubeId}/mqdefault.jpg`} alt="" width="320" height="180" loading="lazy" decoding="async" /> :
        <span class="wave" aria-hidden="true"></span>}
     </div>
@@ -20,13 +20,17 @@ const { title, spine, cover, youtubeId, caption, size = 'crate' } = Astro.props;
 </div>
 
 <style>
-  .cartridge { width: 260px; aspect-ratio: 0.82; background: var(--color-surface-raised); border-radius: var(--rounded-lg); padding: var(--spacing-md); box-shadow: var(--shadow-paper); border-top: 6px solid var(--spine); }
-  .cartridge.box { width: 100%; max-width: 360px; }
-  .grooves { height: 12px; margin-bottom: var(--spacing-md); background: repeating-linear-gradient(to bottom, var(--color-border) 0 1px, transparent 1px 4px); }
-  .label-card { background: var(--color-ink); border-radius: var(--rounded-sm); overflow: hidden; }
+  .cartridge { display: flex; flex-direction: column; width: 220px; height: 100%; background: var(--color-surface-raised); border-radius: var(--rounded-lg); padding: var(--spacing-md); border-top: 6px solid var(--spine); }
+  .cartridge.box { width: 100%; max-width: 360px; height: auto; box-shadow: var(--shadow-paper); }
+  .grooves { flex: none; height: 12px; margin-bottom: var(--spacing-md); background: repeating-linear-gradient(to bottom, var(--color-border) 0 1px, transparent 1px 4px); }
+  .label-card { flex: 1; display: flex; flex-direction: column; min-height: 0; background: var(--color-ink); border-radius: var(--rounded-sm); overflow: hidden; }
   .cart-title { margin: 0; background: var(--spine); color: var(--color-paper); font: 700 16px/1.2 var(--font-display); letter-spacing: 0.1em; text-transform: uppercase; padding: var(--spacing-sm) var(--spacing-md); }
-  .window { aspect-ratio: 16 / 10; display: grid; place-items: center; overflow: hidden; }
+  .window { flex: 1; min-height: 0; display: grid; place-items: center; overflow: hidden; }
+  .box .window { aspect-ratio: 16 / 10; }
+  .box .window.poster { aspect-ratio: 3 / 4; }
   .window :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  /* Posters are shown whole, never cropped. */
+  .window.poster :global(img) { object-fit: contain; }
   .wave { width: 70%; height: 2px; background: var(--spine); box-shadow: 0 -10px 0 -1px var(--spine), 0 10px 0 -1px var(--spine); }
   .caption { margin: 0; background: var(--color-paper); color: var(--color-ink); font-size: 12px; padding: var(--spacing-xs) var(--spacing-md); text-transform: uppercase; letter-spacing: 0.1em; }
 </style>

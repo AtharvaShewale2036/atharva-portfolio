@@ -34,7 +34,6 @@ const projects = defineCollection({
             z.object({
               id: z.string(),
               title: z.string(),
-              summary: z.string(),
               problem: z.string(),
               approach: z.string(),
               result: z.string(),
@@ -42,7 +41,6 @@ const projects = defineCollection({
             }),
           )
           .default([]),
-        troubleshooting: z.array(z.object({ challenge: z.string(), tried: z.string(), fix: z.string() })).default([]),
         credits: z
           .object({
             mine: z.array(z.string()).default([]),

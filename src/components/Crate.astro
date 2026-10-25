@@ -11,19 +11,25 @@ const n = String(projects.length).padStart(2, '0');
   <div class="intro">
     <h1 id="crate-h" class="h-display">Dig through my crate</h1>
     <p class="prompt">Every project I've shipped or prototyped, filed like records.</p>
-    <p class="body-sm muted">Scroll, ← → or click a cartridge to flip through.</p>
+    <p class="body-sm muted">Hover a cartridge to pull it up, click to open it. ← → work too.</p>
   </div>
 
-  <div class="crate" data-crate tabindex="0" role="group" aria-roledescription="carousel" aria-label="Projects crate">
+  <div class="crate" data-crate tabindex="0" role="group" aria-roledescription="carousel" aria-label="Projects crate" style={`--n:${projects.length}`}>
     <p class="visually-hidden" aria-live="polite" data-crate-live></p>
-    <div class="stack">
+    <div class="world">
       {projects.map((p, i) => (
-        <button class="cart" type="button" data-cart data-title={p.data.title} style={`--pos:${i}`} aria-label={`${String(i + 1).padStart(2, '0')} ${p.data.title}`} tabindex="-1">
-          <Cartridge title={p.data.title} spine={p.data.spine} cover={p.data.cover} youtubeId={p.data.videos[0]?.youtubeId} caption={`${p.data.status.split(' ')[0]} · ${p.data.engine.split(' ')[0]}`} />
-        </button>
+        <a class="cart" href={`/work/${p.id}`} data-cart data-title={p.data.title} style={`--i:${i};--spine:${spineVar(p.data.spine)}`} aria-label={`${String(i + 1).padStart(2, '0')} ${p.data.title}`} tabindex="-1">
+          <span class="face front"><Cartridge title={p.data.title} spine={p.data.spine} cover={p.data.cover} youtubeId={p.data.videos[0]?.youtubeId} caption={`${p.data.status.split(' ')[0]} · ${p.data.engine.split(' ')[0]}`} /></span>
+          <span class="face top" aria-hidden="true"></span>
+          <span class="face side" aria-hidden="true"></span>
+        </a>
       ))}
+      <div class="box" aria-hidden="true">
+        <div class="wall back"></div>
+        <div class="wall side"></div>
+        <div class="wall front"><span class="label">Crate 01 · {projects.length} cartridges</span></div>
+      </div>
     </div>
-    <div class="box-front" aria-hidden="true"><span class="label">Crate 01 · {projects.length} cartridges</span></div>
   </div>
 
   <div class="cards">
@@ -58,20 +64,43 @@ const n = String(projects.length).padStart(2, '0');
 </script>
 
 <style>
-  :global(html[data-mode="full"]) .crate-view { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr) minmax(320px, 3fr); gap: var(--spacing-xl); align-items: center; min-height: calc(100vh - 120px); padding-block: var(--spacing-2xl); }
+  :global(html[data-mode="full"]) .crate-view { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr) minmax(320px, 3fr); gap: var(--spacing-xl); align-items: center; min-height: calc(100vh - 120px); padding-block: var(--spacing-2xl); }
   .intro .h-display { font-size: 56px; }
   .intro .prompt { margin-top: var(--spacing-lg); max-width: 40ch; }
-  .crate { position: relative; height: 520px; perspective: 1400px; outline-offset: 8px; }
-  .stack { position: absolute; inset: 0 0 120px; transform-style: preserve-3d; }
-  .cart { position: absolute; left: 50%; bottom: 0; padding: 0; border: 0; background: none; cursor: pointer;
-    transform: translateX(calc(-50% + var(--pos) * 26px)) translateZ(calc(var(--pos) * -40px)) rotateY(-24deg);
-    transition: transform 280ms cubic-bezier(.2, .7, .2, 1); z-index: calc(10 - var(--pos)); }
-  .cart[data-front] { transform: translateX(-60%) translateY(-60px) rotateY(-12deg) rotateX(8deg); }
-  .box-front { position: absolute; left: 10%; right: 10%; bottom: 0; height: 180px; background: var(--color-surface-raised); border-radius: var(--rounded-md); transform: rotateX(8deg); box-shadow: var(--shadow-paper); display: flex; align-items: end; padding: var(--spacing-lg); z-index: 20; }
-  .box-front .label { color: var(--color-on-surface-muted); }
+
+  /* Isometric crate built from CSS 3D planes. x right, y down, z toward the viewer;
+     cartridge i stands at z = -i * pitch, so the crate recedes back-right. */
+  .crate { --w: 220px; --h: 330px; --d: 28px; --pitch: 44px; --wall: 150px; --pad: 14px;
+    --depth: calc((var(--n) - 1) * var(--pitch) + var(--d) + 2 * var(--pad));
+    position: relative; height: 560px; perspective: 1600px; display: grid; place-items: center; outline-offset: 8px; }
+  .world { position: relative; width: var(--w); height: var(--h); transform-style: preserve-3d;
+    transform: translate(-70px, 60px) scale(1.1) rotateX(-16deg) rotateY(-42deg); }
+  .face, .wall { position: absolute; display: block; }
+
+  .cart { position: absolute; inset: 0; transform-style: preserve-3d; color: inherit; text-decoration: none;
+    transform: translateZ(calc(var(--i) * var(--pitch) * -1)); transition: transform 260ms cubic-bezier(.2, .7, .2, 1); }
+  .cart[data-active] { transform: translateZ(calc(var(--i) * var(--pitch) * -1)) translateY(-120px) rotateX(6deg); }
+  .cart:focus-visible { outline: none; }
+  .cart:focus-visible .front { outline: 2px solid var(--color-primary-bright); outline-offset: 4px; }
+  .front { inset: 0; transform: translateZ(calc(var(--d) / 2)); }
+  .top { left: 0; top: 0; width: var(--w); height: var(--d); background: var(--spine); transform-origin: top; transform: translateZ(calc(var(--d) / 2)) rotateX(-90deg); }
+  .cart .side { top: 0; left: var(--w); width: var(--d); height: var(--h); transform-origin: left;
+    background: color-mix(in srgb, var(--color-surface-raised) 60%, var(--color-ink)); transform: translateZ(calc(var(--d) / 2)) rotateY(90deg); }
+
+  .box { position: absolute; inset: 0; transform-style: preserve-3d; pointer-events: none; }
+  .wall { top: calc(var(--h) - var(--wall) + 20px); height: var(--wall); }
+  .wall.front, .wall.back { left: calc(var(--pad) * -1); width: calc(var(--w) + 2 * var(--pad)); }
+  .wall.front { transform: translateZ(calc(var(--d) / 2 + var(--pad))); background: var(--color-surface-raised); border-radius: var(--rounded-md); box-shadow: var(--shadow-paper);
+    display: flex; align-items: end; padding: var(--spacing-lg);
+    background-image: repeating-linear-gradient(to bottom, var(--color-border) 0 1px, transparent 1px 4px); background-size: 80% 12px; background-position: 50% 18px; background-repeat: no-repeat; }
+  .wall.front .label { color: var(--color-on-surface-muted); }
+  .wall.back { transform: translateZ(calc(var(--d) / 2 + var(--pad) - var(--depth))); background: color-mix(in srgb, var(--color-surface-raised) 50%, var(--color-ink)); }
+  .wall.side { left: calc(var(--w) + var(--pad)); width: var(--depth); transform-origin: left;
+    transform: translateZ(calc(var(--d) / 2 + var(--pad))) rotateY(90deg); background: color-mix(in srgb, var(--color-surface-raised) 70%, var(--color-ink)); }
+
   .card-body { padding: var(--spacing-lg); display: grid; gap: var(--spacing-sm); }
   .card-body p { margin: 0; }
   .role { color: var(--color-primary); }
   .actions { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; margin-top: var(--spacing-md); }
-  @media (max-width: 1199px) { :global(html[data-mode="full"]) .crate-view { grid-template-columns: 1fr; } .crate { height: 460px; } }
+  @media (max-width: 1199px) { :global(html[data-mode="full"]) .crate-view { grid-template-columns: 1fr; } }
 </style>

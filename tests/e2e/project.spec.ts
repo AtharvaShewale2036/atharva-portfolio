@@ -113,10 +113,13 @@ test('arrow keys move between chips', async ({ page }) => {
   await expect(page.locator('[data-chip-panel="bam"]')).toBeVisible();
 });
 
-test('credits list my work first', async ({ page }) => {
-  await page.goto('/work/frequency-zero');
+test('systems chapter lists my work, without spec sheet or troubleshooting', async ({ page }) => {
+  await page.goto('/work/evacolregs');
   await page.getByRole('tab', { name: 'Manual' }).click();
-  await expect(page.locator('#credits li').first()).toContainText('Ping system integration');
+  await expect(page.locator('#my-work li')).toHaveCount(7);
+  await expect(page.locator('#my-work li').first()).toContainText('Multiplayer layer from prototype to completion');
+  await expect(page.getByText('Spec sheet')).toHaveCount(0);
+  await expect(page.getByText('Troubleshooting')).toHaveCount(0);
 });
 
 test.describe('no JavaScript', () => {
