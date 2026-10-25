@@ -29,4 +29,4 @@ tools:
   - Nanite
 ---
 
-Two six-month internship projects for Saridena Constructions: a resort and an apartment that clients and sales teams explore themselves on a touchscreen, changing materials and opening information hotspots as they go.
+Two projects from a six-month internship at Saridena Constructions: a resort and an apartment that clients and sales teams explore themselves on a touchscreen, changing materials and opening information hotspots as they go.

@@ -11,7 +11,7 @@ const { title, spine, cover, youtubeId, caption, size = 'crate' } = Astro.props;
   <div class="label-card">
     <p class="cart-title">{title}</p>
     <div class="window">
-      {cover ? <Image src={cover} alt="" widths={[240, 480]} sizes="240px" /> :
+      {cover ? <Image src={cover} alt="" widths={[240, 480]} sizes={size === 'box' ? '360px' : '240px'} /> :
        youtubeId ? <img src={`https://i.ytimg.com/vi/${youtubeId}/mqdefault.jpg`} alt="" width="320" height="180" loading="lazy" decoding="async" /> :
        <span class="wave" aria-hidden="true"></span>}
     </div>
@@ -20,7 +20,7 @@ const { title, spine, cover, youtubeId, caption, size = 'crate' } = Astro.props;
 </div>
 
 <style>
-  .cartridge { width: 260px; aspect-ratio: 0.82; background: var(--color-surface-raised); border-radius: var(--rounded-lg); padding: var(--spacing-md); box-shadow: 8px 10px 0 rgba(14, 13, 16, 0.55); border-top: 6px solid var(--spine); }
+  .cartridge { width: 260px; aspect-ratio: 0.82; background: var(--color-surface-raised); border-radius: var(--rounded-lg); padding: var(--spacing-md); box-shadow: var(--shadow-paper); border-top: 6px solid var(--spine); }
   .cartridge.box { width: 100%; max-width: 360px; }
   .grooves { height: 12px; margin-bottom: var(--spacing-md); background: repeating-linear-gradient(to bottom, var(--color-border) 0 1px, transparent 1px 4px); }
   .label-card { background: var(--color-ink); border-radius: var(--rounded-sm); overflow: hidden; }

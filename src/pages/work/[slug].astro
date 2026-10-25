@@ -13,9 +13,8 @@ const { project } = Astro.props;
 const d = project.data;
 const { Content } = await render(project);
 const hasManual = d.tier === 'full';
-const ogImage = d.cover?.src ?? (d.videos[0] ? `https://i.ytimg.com/vi/${d.videos[0].youtubeId}/hqdefault.jpg` : '/og.png');
 ---
-<Base title={`${d.title} · Atharva Shewale`} description={d.oneLine} image={ogImage}>
+<Base title={`${d.title} · Atharva Shewale`} description={d.oneLine} image={`/og/${project.id}.png`}>
   <div class="container page">
     <a class="label muted back-link" href="/#projects">‹ Back to crate</a>
     <h1 class="h-lg">{d.title}</h1>

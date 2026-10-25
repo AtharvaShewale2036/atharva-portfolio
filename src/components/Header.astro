@@ -32,13 +32,14 @@ const nav = [
   .when-quick { display: none; }
   :global(html[data-mode="quick"]) .when-full { display: none; }
   :global(html[data-mode="quick"]) .when-quick { display: inline; }
-  @media (max-width: 1023px) { nav { display: none; } .actions { margin-left: auto; } }
-  @media (max-width: 767px) { .actions .btn-ghost:first-child { display: none; } }
+  @media (max-width: 1023px) { nav { order: 3; flex-basis: 100%; margin-left: 0; } nav ul { flex-wrap: wrap; gap: var(--spacing-md); } .actions { margin-left: auto; } }
+  @media (max-width: 767px) { nav ul { gap: var(--spacing-sm) var(--spacing-md); } nav a { letter-spacing: 0.08em; } }
 </style>
 
 <script>
   import { initSoundToggle } from '../scripts/sound';
   initSoundToggle();
+  // Mode rules must stay in sync with the inline script in layouts/Base.astro.
   const qs = ['(max-width: 767px)', '(prefers-reduced-motion: reduce)'].map((q) => matchMedia(q));
   for (const m of qs) {
     m.addEventListener('change', () => {
@@ -55,6 +56,7 @@ const nav = [
       const next = root.dataset.mode === 'quick' ? 'full' : 'quick';
       root.dataset.mode = next;
       try { localStorage.setItem('mode', next); } catch {}
+      if (!document.querySelector('[data-show]')) location.href = '/';
     }),
   );
 </script>

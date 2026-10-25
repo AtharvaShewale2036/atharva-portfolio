@@ -45,8 +45,16 @@ export function initTeardown(root: HTMLElement): void {
   };
 
   chips.forEach((c, i) => {
-    c.addEventListener('click', () => select(i));
+    c.addEventListener('click', () => {
+      select(i);
+      if (matchMedia('(max-width: 1023px)').matches) panels[i].scrollIntoView({ block: 'nearest' });
+    });
     c.addEventListener('keydown', (e) => {
+      if (e.key === 'Home' || e.key === 'End') {
+        e.preventDefault();
+        select(e.key === 'Home' ? 0 : chips.length - 1, true);
+        return;
+      }
       const d = e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 1 : e.key === 'ArrowLeft' || e.key === 'ArrowUp' ? -1 : 0;
       if (!d) return;
       e.preventDefault();

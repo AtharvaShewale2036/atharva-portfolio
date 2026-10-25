@@ -41,6 +41,19 @@ test.describe('phone', () => {
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     expect(overflow).toBeLessThanOrEqual(0);
   });
+  test('header keeps résumé and nav on phones', async ({ page }) => {
+    await page.goto('/work/evacolregs');
+    await expect(page.locator('header').getByRole('link', { name: 'Résumé (PDF)' })).toBeVisible();
+    await expect(page.locator('header nav').getByRole('link', { name: 'Contact' })).toBeVisible();
+  });
+});
+
+test('mode toggle on a project page goes home in that mode', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/work/frequency-zero');
+  await page.getByRole('button', { name: 'Quick start' }).click();
+  await expect(page).toHaveURL(/\/$/);
+  await expect(page.locator('html')).toHaveAttribute('data-mode', 'quick');
 });
 
 test('light page has no tablist tabs', async ({ page }) => {
@@ -73,8 +86,22 @@ test('selecting a chip shows its teardown; Esc returns to the board', async ({ p
   await expect(page.locator('[data-chip="senses"]')).toHaveAttribute('aria-pressed', 'true');
   await expect(page.locator('[data-chip-panel="senses"]')).toBeVisible();
   await expect(page.locator('[data-chip-panel="ping-pool"]')).toBeHidden();
+  await page.locator('[data-chip-panel="senses"] [data-teardown-close]').focus();
+  await expect(page.locator('[data-chip="senses"]')).not.toBeFocused();
   await page.keyboard.press('Escape');
   await expect(page.locator('[data-chip="senses"]')).toBeFocused();
+});
+
+test('Home and End jump to first and last chip', async ({ page }) => {
+  await page.goto('/work/evacolregs');
+  await page.getByRole('tab', { name: 'Manual' }).click();
+  const chips = page.locator('[data-chip]');
+  const n = await chips.count();
+  await chips.nth(2).focus();
+  await page.keyboard.press('End');
+  await expect(chips.nth(n - 1)).toBeFocused();
+  await page.keyboard.press('Home');
+  await expect(chips.first()).toBeFocused();
 });
 
 test('arrow keys move between chips', async ({ page }) => {

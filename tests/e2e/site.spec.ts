@@ -45,3 +45,10 @@ test('every internal link resolves', async ({ page, request }) => {
   expect((await request.get('/resume.pdf')).status()).toBe(200);
   expect(seen.size).toBeGreaterThanOrEqual(7);
 });
+
+const ogSlugs = ['evacolregs', 'frequency-zero', 'saridena-archviz', 'ctrlaltexp-touch', 'ctrlaltexp-vr', 'trapped-in-terror'];
+test('per-project OG images exist and are wired', async ({ page, request }) => {
+  for (const s of ogSlugs) expect((await request.get(`/og/${s}.png`)).status(), s).toBe(200);
+  await page.goto('/work/evacolregs');
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', /\/og\/evacolregs\.png$/);
+});

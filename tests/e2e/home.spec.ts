@@ -47,6 +47,18 @@ test('contact links are real', async ({ page }) => {
   await expect(page.locator('#contact a[href="tel:+917041142749"]')).toHaveCount(1);
 });
 
+test('quick start CTAs include WhatsApp', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('#main .ctas a[href="https://wa.me/917041142749"]')).toHaveCount(1);
+});
+
+test('crate headline fits two lines at 1440', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/');
+  const r = await page.locator('#crate-h').evaluate((el) => ({ h: el.getBoundingClientRect().height, lh: parseFloat(getComputedStyle(el).lineHeight) }));
+  expect(r.h).toBeLessThanOrEqual(r.lh * 2.2);
+});
+
 test.describe('crate', () => {
   test.use({ viewport: { width: 1440, height: 900 } });
 

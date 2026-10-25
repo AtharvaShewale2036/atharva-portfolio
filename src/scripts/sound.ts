@@ -9,7 +9,7 @@ const enabled = (): boolean => {
 export function playBlip(kind: 'flip' | 'select'): void {
   if (!enabled()) return;
   ctx ??= new AudioContext();
-  if (ctx.state === 'suspended') void ctx.resume();
+  if (ctx.state === 'suspended') ctx.resume().catch(() => {});
   const osc = ctx.createOscillator();
   const gain = ctx.createGain();
   osc.type = 'square';

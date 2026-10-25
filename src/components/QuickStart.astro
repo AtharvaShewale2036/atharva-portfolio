@@ -18,6 +18,7 @@ const { projects } = Astro.props;
       <a class="btn btn-primary" href="/resume.pdf" download>Résumé (PDF)</a>
       <a class="btn btn-ghost" href={profile.contact.linkedin} rel="noopener">LinkedIn ↗</a>
       <a class="btn btn-ghost" href={`mailto:${profile.contact.email}`}>Email</a>
+      <a class="btn btn-ghost" href={profile.contact.whatsapp} rel="noopener">WhatsApp ↗</a>
     </div>
   </div>
 
@@ -45,9 +46,9 @@ const { projects } = Astro.props;
   .role { color: var(--color-primary-bright); margin-block: var(--spacing-md); }
   .intro p { max-width: 68ch; }
   .avail { display: flex; gap: var(--spacing-sm); align-items: center; }
-  .dot { width: 8px; height: 8px; background: var(--color-primary); }
+  .dot { flex: none; width: 8px; height: 8px; background: var(--color-primary); }
   .ctas { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
-  .list-head { display: flex; justify-content: space-between; padding: var(--spacing-md) var(--spacing-lg); border-bottom: 1px solid color-mix(in srgb, var(--color-ink) 15%, transparent); }
+  .list-head { display: flex; flex-wrap: wrap; gap: var(--spacing-sm); justify-content: space-between; padding: var(--spacing-md) var(--spacing-lg); border-bottom: 1px solid color-mix(in srgb, var(--color-ink) 15%, transparent); }
   .list-note { color: var(--color-ink-muted); text-transform: none; letter-spacing: 0; font-family: var(--font-body); }
   ol { list-style: none; margin: 0; padding: 0; }
   li + li { border-top: 1px solid color-mix(in srgb, var(--color-ink) 15%, transparent); }

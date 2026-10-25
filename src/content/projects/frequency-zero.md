@@ -7,7 +7,7 @@ genre: First-person horror shooter
 engine: UE5.6 · 100% Blueprints
 platform: Windows
 role: Lead Gameplay Programmer
-status: Prototype on itch.io · IGDC 2026
+status: Prototype on itch.io · IGDC 2026 (planned)
 dates: Oct 2025 – Present
 team: 8 developers
 oneLine: You are blind; every shot flashes the world into view and tells the monsters where you are.

@@ -6,7 +6,7 @@ export const profile = {
   availability: 'Open to full-time roles and freelance projects · Remote / relocate · Goa, India',
   bio: [
     'Unreal Engine 5 developer working across games, simulation and real-time visualisation, on PC, touchscreen kiosks, Meta Quest and cloud streaming.',
-    'At eDot Solutions I build eVaColregs, a C++ multiplayer collision-regulations trainer used for maritime training. On Frequency Zero I lead gameplay programming for an eight-person horror shooter.',
+    'At eDot Solutions I build core systems for eVaColregs, a C++ multiplayer collision-regulations trainer used for maritime training. On Frequency Zero I lead gameplay programming for an eight-person horror shooter.',
     'Before that I delivered ArchViz walkthroughs end to end as a freelancer and an intern, and spent four years as a 3D artist and motion designer, so I own both the systems and the look.',
   ],
   contact: {
@@ -25,7 +25,7 @@ export const profile = {
     { group: 'Platforms & tools', items: ['Windows', 'Android', 'Meta Quest 2', 'AR', 'Pixel Streaming', 'Git', 'Perforce', 'Adobe Creative Suite'] },
   ],
   experience: [
-    { role: 'Game Developer', org: 'eDot Solutions', place: 'Goa, India · Full-time', dates: 'Aug 2025 – Present', points: ['Real-time naval simulator (eVaColregs) in UE5 C++ and Blueprints, deployed to cloud and local machines with hardware input rigs.', 'AI-controlled ships, procedurally generated scenarios, ship physics and dynamic lighting for training conditions.'] },
+    { role: 'Game Developer', org: 'eDot Solutions', place: 'Goa, India · Full-time', dates: 'Aug 2025 – Present', points: ['Real-time naval simulator (eVaColregs) in UE5 C++ and Blueprints, deployed to cloud and local machines with hardware input rigs.', 'Multiplayer layer, Bridge Alert Management, collision handling and the Pixel Streaming front end for eVaColregs.'] },
     { role: 'Lead Gameplay Programmer', org: 'Frequency Zero', place: 'Collaborative indie project', dates: 'Oct 2025 – Present', points: ['Player abilities, combat, enemy AI, tutorial and adaptive music for a first-person horror shooter.', 'Playable Windows prototype on itch.io; planned showcase at IGDC 2026, Chennai.'] },
     { role: 'Freelance UE5 Developer', org: 'Gaming & ArchViz', place: 'Self-employed', dates: 'Apr 2025 – Present', points: ['Delivered an INR 1.8 lakh Unreal ArchViz project end to end as sole developer.', 'Interactive environments for PC, touchscreen kiosks, VR and AR with modular Blueprint systems.'] },
     { role: 'UE5 Artist & Developer (Intern)', org: 'Saridena Constructions', place: 'Hyderabad, India', dates: 'Oct 2024 – Apr 2025', points: ['VR/AR/XR walkthroughs, interactives, renders and cinematics for real-estate projects, including multiplayer sessions.', 'Level design, lighting and texturing for Meta Quest 2 and Android AR builds.'] },

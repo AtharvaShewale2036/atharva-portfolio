@@ -58,7 +58,8 @@ const n = String(projects.length).padStart(2, '0');
 </script>
 
 <style>
-  :global(html[data-mode="full"]) .crate-view { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 4fr) minmax(0, 3fr); gap: var(--spacing-xl); align-items: center; min-height: calc(100vh - 120px); padding-block: var(--spacing-2xl); }
+  :global(html[data-mode="full"]) .crate-view { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 4fr) minmax(0, 3fr); gap: var(--spacing-xl); align-items: center; min-height: calc(100vh - 120px); padding-block: var(--spacing-2xl); }
+  .intro .h-display { font-size: 56px; }
   .intro .prompt { margin-top: var(--spacing-lg); max-width: 40ch; }
   .crate { position: relative; height: 520px; perspective: 1400px; outline-offset: 8px; }
   .stack { position: absolute; inset: 0 0 120px; transform-style: preserve-3d; }
@@ -66,7 +67,7 @@ const n = String(projects.length).padStart(2, '0');
     transform: translateX(calc(-50% + var(--pos) * 26px)) translateZ(calc(var(--pos) * -40px)) rotateY(-24deg);
     transition: transform 280ms cubic-bezier(.2, .7, .2, 1); z-index: calc(10 - var(--pos)); }
   .cart[data-front] { transform: translateX(-60%) translateY(-60px) rotateY(-12deg) rotateX(8deg); }
-  .box-front { position: absolute; left: 10%; right: 10%; bottom: 0; height: 180px; background: var(--color-surface-raised); border-radius: var(--rounded-md); transform: rotateX(8deg); box-shadow: 8px 10px 0 rgba(14, 13, 16, 0.55); display: flex; align-items: end; padding: var(--spacing-lg); z-index: 20; }
+  .box-front { position: absolute; left: 10%; right: 10%; bottom: 0; height: 180px; background: var(--color-surface-raised); border-radius: var(--rounded-md); transform: rotateX(8deg); box-shadow: var(--shadow-paper); display: flex; align-items: end; padding: var(--spacing-lg); z-index: 20; }
   .box-front .label { color: var(--color-on-surface-muted); }
   .card-body { padding: var(--spacing-lg); display: grid; gap: var(--spacing-sm); }
   .card-body p { margin: 0; }

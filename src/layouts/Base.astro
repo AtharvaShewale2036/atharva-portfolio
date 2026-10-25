@@ -30,6 +30,7 @@ const ogImage = new URL(image, Astro.site);
     <meta name="theme-color" content="#2a292e" />
     <script is:inline>
       // Decide the mode before first paint so phones never flash the 3D crate.
+      // Mode rules must stay in sync with the matchMedia listener in components/Header.astro.
       (function () {
         var forced = matchMedia('(max-width: 767px)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches;
         var stored = null;
