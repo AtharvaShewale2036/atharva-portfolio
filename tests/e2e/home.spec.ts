@@ -59,6 +59,16 @@ test('crate headline fits two lines at 1440', async ({ page }) => {
   expect(r.h).toBeLessThanOrEqual(r.lh * 2.2);
 });
 
+for (const width of [1200, 1440]) {
+  test(`crate card is wide enough for its content at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/');
+    const r = await page.locator('[data-crate-card]:not([hidden])').evaluate((el) => ({ w: el.getBoundingClientRect().width, sw: el.scrollWidth, cw: el.clientWidth }));
+    expect(r.w).toBeGreaterThanOrEqual(300);
+    expect(r.sw).toBeLessThanOrEqual(r.cw + 1);
+  });
+}
+
 test.describe('crate', () => {
   test.use({ viewport: { width: 1440, height: 900 } });
 
